@@ -1,16 +1,14 @@
 using UnityEngine;
-
-public class Score : MonoBehaviour
+using UnityEngine.UI;
+public class LogicManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int playerscore;
+    public Text scoretext;
+
+    private void addScore()
     {
-        
+        playerscore++;
+        scoretext.text = playerscore.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
