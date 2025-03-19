@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "Run Button Down\n----------------\nWhen button Run is pressed:\n         
+  _explanation: "Run Button Down\n----------------\nWhen key LeftShift is pressed:\n         
     select a random velocity between (400.00, 500.00) and (400.00, 500.00) and set
     it to Player (1)'s movement, and clamps the speed to be between [400,650].\n         
     Note that this changes the velocity parameters of the movement, not the current
@@ -538,9 +538,9 @@ MonoBehaviour:
   actions:
   - delay: 0
     action: {fileID: 136500165}
-  inputType: 0
+  inputType: 1
   buttonName: Run
-  key: 0
+  key: 304
   axis: 
   deadArea: {x: -0.2, y: 0.2}
   continuous: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
     and on the ground will be Player (1)(Player (1) (UnityEngine.CapsuleCollider2D)).
 
     The
-    character will jump by holding the [Jump] button.
+    character will jump by holding the [Space] button.
 
     The vertical velocity
     will be 500 units/second while jump is pressed, during a maximum of 0,2 seconds.
@@ -758,7 +758,7 @@ MonoBehaviour:
   maxJumpCount: 1
   jumpBufferingTime: 0.1
   jumpHoldMaxTime: 0.2
-  jumpInputType: 1
+  jumpInputType: 2
   jumpAxis: Vertical
   jumpButton: Jump
   jumpKey: 32
@@ -13417,6 +13417,7 @@ GameObject:
   - component: {fileID: 1738328229}
   - component: {fileID: 1738328233}
   - component: {fileID: 1738328232}
+  - component: {fileID: 1738328234}
   m_Layer: 7
   m_Name: Exit
   m_TagString: Untagged
@@ -13794,14 +13795,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: Switches to scene Level 1
+  _explanation: Switches to scene Miguel
   description: 
   enableAction: 1
   hasTags: 0
   actionTags: []
   hasConditions: 0
   actionConditions: []
-  sceneName: Level 1
+  sceneName: Miguel
 --- !u!114 &1738328233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13816,7 +13817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "When a collision with a trigger with tags [Player] starts:\n         
-    switches to scene Level 1\n"
+    switches to scene Miguel\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 0
@@ -13829,6 +13830,33 @@ MonoBehaviour:
   eventType: 0
   tags:
   - {fileID: 11400000, guid: 15edcc3cfa00a4e2fba5f80bcf8774c8, type: 2}
+--- !u!114 &1738328234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738328225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: Resets variable points
+  description: 
+  enableAction: 1
+  hasTags: 0
+  actionTags: []
+  hasConditions: 0
+  actionConditions: []
+  valueHandler: {fileID: 0}
+  variable: {fileID: 11400000, guid: d18a0b4475763614e8c37f295d3919ec, type: 2}
+  operation: 0
+  changeValue: 0
+  changeValueHandler: {fileID: 0}
+  changeVariable: {fileID: 0}
+  scaleWithTime: 0
 --- !u!1 &1739021425
 GameObject:
   m_ObjectHideFlags: 0
@@ -20985,6 +21013,7 @@ GameObject:
   - component: {fileID: 1898470262}
   - component: {fileID: 1898470261}
   - component: {fileID: 1898470260}
+  - component: {fileID: 1898470267}
   - component: {fileID: 1898470259}
   m_Layer: 9
   m_Name: Spikes
@@ -21021,14 +21050,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: Switches to scene Level 2
+  _explanation: Switches to scene Fonseca
   description: 
   enableAction: 1
   hasTags: 0
   actionTags: []
   hasConditions: 0
   actionConditions: []
-  sceneName: Level 2
+  sceneName: Fonseca
 --- !u!114 &1898470260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21043,7 +21072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "When a collision with a bounding volume with tags [Player] starts:\n         
-    switches to scene Level 2\n"
+    switches to scene Fonseca\n          resets variable points\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 0
@@ -21052,6 +21081,8 @@ MonoBehaviour:
   actions:
   - delay: 0
     action: {fileID: 1898470259}
+  - delay: 0
+    action: {fileID: 1898470267}
   isTrigger: 0
   eventType: 0
   tags:
@@ -21856,6 +21887,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1898470267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898470257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: Resets variable points
+  description: 
+  enableAction: 1
+  hasTags: 0
+  actionTags: []
+  hasConditions: 0
+  actionConditions: []
+  valueHandler: {fileID: 0}
+  variable: {fileID: 11400000, guid: d18a0b4475763614e8c37f295d3919ec, type: 2}
+  operation: 0
+  changeValue: 0
+  changeValueHandler: {fileID: 0}
+  changeVariable: {fileID: 0}
+  scaleWithTime: 0
 --- !u!1 &2092555406
 GameObject:
   m_ObjectHideFlags: 0
