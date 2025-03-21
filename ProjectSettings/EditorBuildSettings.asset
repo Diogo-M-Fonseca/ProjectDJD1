@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Miguel.unity
     guid: 0f23f11b6835c456aa9f59691e5c77aa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fonseca.unity
     guid: 95f9483398d0148489c93e11e2dea2c7
   m_configObjects: {}
