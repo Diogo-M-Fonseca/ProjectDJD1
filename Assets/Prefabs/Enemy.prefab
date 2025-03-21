@@ -267,18 +267,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: 'Follows the closest object tagged with [Player], at 200 units per
+  _explanation: 'Follows the closest object tagged with [Player], at 300 units per
     second.
 
 '
   description: 
   hasConditions: 0
   conditions: []
-  speed: 200
+  speed: 300
   targetType: 0
   targetTag: {fileID: 11400000, guid: 15edcc3cfa00a4e2fba5f80bcf8774c8, type: 2}
   targetObject: {fileID: 0}
-  stoppingDistance: 0
+  stoppingDistance: -1
   relativeMovement: 0
   rotateTowardsDirection: 0
   alignAxis: 0
