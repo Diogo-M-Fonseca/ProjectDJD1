@@ -1783,6 +1783,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494846985}
   m_CullTransparentMesh: 1
+--- !u!1 &522130908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522130909}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522130909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522130908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 449, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 991056503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784092445
 GameObject:
   m_ObjectHideFlags: 0
@@ -13227,6 +13258,79 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &991056501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991056503}
+  - component: {fileID: 991056502}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &991056502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991056501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a80c1b00e4b0e2a4e8c66fd1517e2b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: 'When triggered by a [Spawn] action, this component will create 1
+    objects.
+
+    There''s currently no defined object to spawn.
+
+    These objects
+    will spawn will spawn at the position of [SpawnPoint].
+
+'
+  description: 
+  spawnsPerTrigger: 1
+  forceCount: 0
+  numberOfEntities: 1
+  usePulsePattern: 0
+  pulsePattern: xoxo
+  pulseTime: 0.1
+  prefabs: []
+  spawnPoints:
+  - {fileID: 522130909}
+  spawnPointType: 0
+  spawnPathSpacing: 0.25
+  spawnRotation: 0
+  spawnAlignmentAxis: 0
+  modifiers: 0
+  scaleVariance: {x: 1, y: 1}
+  speedVariance: {x: 1, y: 1}
+  setParent: 0
+--- !u!4 &991056503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991056501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 522130909}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1378518351
 GameObject:
   m_ObjectHideFlags: 0
@@ -22004,3 +22108,4 @@ SceneRoots:
   - {fileID: 136500177}
   - {fileID: 274198226}
   - {fileID: 861287969}
+  - {fileID: 991056503}
