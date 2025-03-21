@@ -21910,7 +21910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 426403198502018234, guid: caf9507c0bbb32f4facd93c2d1c2b017, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -31
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 426403198502018234, guid: caf9507c0bbb32f4facd93c2d1c2b017, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21944,6 +21944,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3201414479262003128, guid: caf9507c0bbb32f4facd93c2d1c2b017, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355685905936790274, guid: caf9507c0bbb32f4facd93c2d1c2b017, type: 3}
+      propertyPath: targetObject
+      value: 
+      objectReference: {fileID: 136500157}
     - target: {fileID: 5416090423277301137, guid: caf9507c0bbb32f4facd93c2d1c2b017, type: 3}
       propertyPath: m_Name
       value: Enemy
