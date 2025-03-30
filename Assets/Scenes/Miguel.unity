@@ -290,22 +290,6 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   targetTag: {fileID: 0}
   setParent: 0
---- !u!4 &248667611 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-  m_PrefabInstance: {fileID: 7597947949997381352}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &248667612 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8035738588261636352, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-  m_PrefabInstance: {fileID: 7597947949997381352}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &310268851
 GameObject:
   m_ObjectHideFlags: 0
@@ -116644,7 +116628,7 @@ MonoBehaviour:
   actionTags: []
   hasConditions: 0
   actionConditions: []
-  target: {fileID: 248667611}
+  target: {fileID: 5723864697217644079}
   changeType: 0
   xAxis: 1
   positionX: {x: 0, y: 0}
@@ -117240,6 +117224,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1431631654}
   - {fileID: 1679737011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117593,6 +117578,165 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   targetTag: {fileID: 0}
   setParent: 0
+--- !u!1 &1431631653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1431631654}
+  - component: {fileID: 1431631657}
+  - component: {fileID: 1431631656}
+  - component: {fileID: 1431631655}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1431631654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431631653}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6718962, y: 0.81439, z: 0.81439}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1066251955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -462, y: -221}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1431631655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431631653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c80d88569a89340a3122230bb266c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: This component displays the variables [RageBar] as text.
+  description: 
+  values:
+  - init: 1
+    type: 3
+    variableInstance: {fileID: 0}
+    variable: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    floatValue: 0
+    intValue: 0
+--- !u!114 &1431631656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431631653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -185.43387, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1431631657
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431631653}
+  m_CullTransparentMesh: 1
 --- !u!1 &1460592160
 GameObject:
   m_ObjectHideFlags: 0
@@ -118094,6 +118238,7 @@ GameObject:
   - component: {fileID: 1738328233}
   - component: {fileID: 1738328232}
   - component: {fileID: 1738328234}
+  - component: {fileID: 1738328235}
   m_Layer: 7
   m_Name: Exit
   m_TagString: Untagged
@@ -118513,7 +118658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "When a collision with a trigger with tags [Player] starts:\n         
-    resets variable points\n          switches to scene Miguel\n"
+    resets variable points\n          resets variable RageBar\n          switches
+    to scene Miguel\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
@@ -118522,6 +118668,8 @@ MonoBehaviour:
   actions:
   - delay: 0
     action: {fileID: 1738328234}
+  - delay: 0
+    action: {fileID: 1738328235}
   - delay: 0
     action: {fileID: 1738328232}
   isTrigger: 1
@@ -118550,6 +118698,33 @@ MonoBehaviour:
   actionConditions: []
   valueHandler: {fileID: 0}
   variable: {fileID: 11400000, guid: d18a0b4475763614e8c37f295d3919ec, type: 2}
+  operation: 0
+  changeValue: 0
+  changeValueHandler: {fileID: 0}
+  changeVariable: {fileID: 0}
+  scaleWithTime: 0
+--- !u!114 &1738328235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738328225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: Resets variable RageBar
+  description: 
+  enableAction: 1
+  hasTags: 0
+  actionTags: []
+  hasConditions: 0
+  actionConditions: []
+  valueHandler: {fileID: 0}
+  variable: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
   operation: 0
   changeValue: 0
   changeValueHandler: {fileID: 0}
@@ -128465,7 +128640,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7597947949997381352
+--- !u!114 &2212399559133247320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4516170310714926206, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+  m_PrefabInstance: {fileID: 5847094735598955575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967838254551788716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4967838254551788716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1195253958352679428, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+  m_PrefabInstance: {fileID: 5847094735598955575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5723864697217644079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+  m_PrefabInstance: {fileID: 5847094735598955575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5847094735598955575
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -128473,80 +128669,321 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -474
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalPosition.y
       value: -312
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746656986254680263, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 778148193303892946, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3278651271122762308, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: m_Name
-      value: Player (1)
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: speed.y
+      value: 400
       objectReference: {fileID: 0}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: isTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
       propertyPath: _explanation
-      value: "When a collision with a bounding volume with tags [enemy] starts:\n         
-        resets variable points\n          switches to scene Miguel\n"
+      value: 'Platformer controller
+
+        ----------------
+
+        This movement
+        will only affect the object if (RageBar <> 50).
+
+
+        Platformer movement;
+        horizontal speed is 400 units per second.
+
+        Horizontal movement will
+        be controlled by the [Horizontal] axis.
+
+        Ground check is going to
+        use collider GroundCheck, the ground layer mask defines what is considered
+        solid ground.
+
+        When there''s no solid ground below character, the
+        character will start falling after 0,15s, with a gravity scale of 2.
+
+        The
+        character''s trajectory can be modified mid-air.
+
+        When in the air,
+        the character''s collider will be Player(Player (UnityEngine.BoxCollider2D)),
+        and on the ground will be Player(Player (UnityEngine.CapsuleCollider2D)).
+
+        The
+        character will jump by holding the [Space] button.
+
+        The vertical
+        velocity will be 400 units/second while jump is pressed, during a maximum
+        of 0,2 seconds.
+
+        Jump height will be between 56 to 136 units (from
+        0,28 to 0,48 seconds to top of trajectory).
+
+        If the character presses
+        the jump button up to 0,1s before hitting the ground, it will jump automatically
+        again.
+
+        This controller also controls some visuals:
+
+        When
+        the player intent is to go left, the horizontal scale of this object will
+        be inverted.
+
+        Some values will be set on animator Player:
+
+        Horizontal
+        velocity will be set to parameter VelocityX.
+
+        Absolute horizontal
+        velocity will be set to parameter AbsVelocityX.
+
+        Vertical velocity
+        will be set to parameter VelocityY.
+
+        Absolute vertical velocity will
+        be set to parameter AbsVelocityY.
+
+        Grounded state will be set to
+        parameter IsGrounded.
+
+'
       objectReference: {fileID: 0}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: enableTrigger
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: hasConditions
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: actions.Array.size
-      value: 2
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.size
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: actions.Array.data[0].action
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.data[0].value
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.data[0].variable
       value: 
-      objectReference: {fileID: 248667612}
-    - target: {fileID: 4531619008549762493, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
-      propertyPath: actions.Array.data[1].action
+      objectReference: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    - target: {fileID: 895090079003812133, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.data[0].comparison
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195253958352679428, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: variable
+      value: 
+      objectReference: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: operation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: _explanation
+      value: Resets variable RageBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: hasConditions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: scaleWithTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: changeVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    - target: {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: actionConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310869467474302130, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: _explanation
+      value: "When a collision with a bounding volume with tags [enemy] starts:\n         
+        resets variable points\n          resets variable RageBar\n          switches
+        to scene Miguel\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310869467474302130, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: actions.Array.data[2].action
       value: 
       objectReference: {fileID: 784092446}
-    m_RemovedComponents: []
+    - target: {fileID: 6978895244993495131, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: speed.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978895244993495131, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: _explanation
+      value: 'Platformer controller
+
+        ----------------
+
+        This movement
+        will only affect the object if (RageBar == 50).
+
+
+        Platformer movement;
+        horizontal speed is 700 units per second.
+
+        Horizontal movement will
+        be controlled by the [Horizontal] axis.
+
+        Ground check is going to
+        use collider GroundCheck, the ground layer mask defines what is considered
+        solid ground.
+
+        When there''s no solid ground below character, the
+        character will start falling after 0,15s, with a gravity scale of 2.
+
+        The
+        character''s trajectory can be modified mid-air.
+
+        When in the air,
+        the character''s collider will be Player(Player (UnityEngine.BoxCollider2D)),
+        and on the ground will be Player(Player (UnityEngine.CapsuleCollider2D)).
+
+        The
+        character will jump by holding the [Space] button.
+
+        The vertical
+        velocity will be 400 units/second while jump is pressed, during a maximum
+        of 0,2 seconds.
+
+        Jump height will be between 56 to 136 units (from
+        0,28 to 0,48 seconds to top of trajectory).
+
+        If the character presses
+        the jump button up to 0,1s before hitting the ground, it will jump automatically
+        again.
+
+        This controller also controls some visuals:
+
+        When
+        the player intent is to go left, the horizontal scale of this object will
+        be inverted.
+
+        Some values will be set on animator Player:
+
+        Horizontal
+        velocity will be set to parameter VelocityX.
+
+        Absolute horizontal
+        velocity will be set to parameter AbsVelocityX.
+
+        Vertical velocity
+        will be set to parameter VelocityY.
+
+        Absolute vertical velocity will
+        be set to parameter AbsVelocityY.
+
+        Grounded state will be set to
+        parameter IsGrounded.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978895244993495131, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978895244993495131, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.data[1].value
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978895244993495131, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      propertyPath: conditions.Array.data[1].variable
+      value: 
+      objectReference: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1992029521088400064, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f96f8a38dd3dff742943f68f26016f56, type: 3}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1195253958352679428, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8979315184968885488}
+  m_SourcePrefab: {fileID: 100100000, guid: 871d5402c95e14e458e0c3ef444ca7a8, type: 3}
+--- !u!114 &8979315184968885488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967838254551788716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46216fa097ecb754babda0f26d640422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: "If (RageBar == 50) and after 5 seconds, trigger the actions::\n         
+    resets variable RageBar\n"
+  description: 
+  enableTrigger: 1
+  allowRetrigger: 0
+  hasPreconditions: 1
+  preConditions:
+  - negate: 0
+    valueHandler: {fileID: 0}
+    variable: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+    valueType: 0
+    tag: {fileID: 0}
+    tagCountRangeEnabled: 0
+    tagCountRange: 0
+    sourceTransform: {fileID: 0}
+    rigidBody: {fileID: 0}
+    axis: 0
+    probe: {fileID: 0}
+    movementPlatformer: {fileID: 0}
+    comparison: 0
+    value: 50
+    comparisonValueHandler: {fileID: 0}
+    comparisonVariable: {fileID: 0}
+    percentageCompare: 0
+    tile: {fileID: 0}
+    tileSet: {fileID: 0}
+  actions:
+  - delay: 0
+    action: {fileID: 2212399559133247320}
+  startTriggered: 0
+  initialDelayEnable: 0
+  initialDelay: {x: 5, y: 5}
+  timeInterval: {x: 5, y: 5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -128554,7 +128991,7 @@ SceneRoots:
   - {fileID: 1378518354}
   - {fileID: 2092555408}
   - {fileID: 384344962}
-  - {fileID: 7597947949997381352}
+  - {fileID: 5847094735598955575}
   - {fileID: 1832671717}
   - {fileID: 784092448}
   - {fileID: 1460592164}

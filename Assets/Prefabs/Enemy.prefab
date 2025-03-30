@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1879194422342805841}
   - component: {fileID: 7751671828520056197}
   - component: {fileID: 6971742425524244879}
+  - component: {fileID: 644343666281100603}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -212,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "When a collision with a trigger with tags [faca] starts:\n         
-    adds 1 to variable points\n          destroys this object\n"
+    adds 1 to variable points\n          adds 5 to variable RageBar\n          destroys
+    this object\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
@@ -221,6 +223,8 @@ MonoBehaviour:
   actions:
   - delay: 0
     action: {fileID: 7751671828520056197}
+  - delay: 0
+    action: {fileID: 644343666281100603}
   - delay: 0
     action: {fileID: 1581671532851854791}
   isTrigger: 1
@@ -285,3 +289,30 @@ MonoBehaviour:
   maxRotationSpeed: 360
   cameraObject: {fileID: 0}
   cameraTag: {fileID: 0}
+--- !u!114 &644343666281100603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5416090423277301137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: Adds 5 to variable RageBar
+  description: 
+  enableAction: 1
+  hasTags: 0
+  actionTags: []
+  hasConditions: 0
+  actionConditions: []
+  valueHandler: {fileID: 0}
+  variable: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
+  operation: 2
+  changeValue: 5
+  changeValueHandler: {fileID: 0}
+  changeVariable: {fileID: 0}
+  scaleWithTime: 0
