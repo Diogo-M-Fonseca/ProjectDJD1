@@ -1,14 +1,19 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Mathf;
-public class CountdownTimer : MonoBehaviour
+using TMPro;
+
+public class Timer : MonoBehaviour
 {
     [SerializeField]
     private float totalTime = 90;
     [SerializeField]
-    private Text timerText;
+    private TextMeshProUGUI timerText;  // Changed to TextMeshProUGUI
+
+    void Start()
+    {
+        timerText.text = totalTime.ToString("F2");  // Convert float to string
+    }
 
     void Update()
     {
@@ -21,12 +26,11 @@ public class CountdownTimer : MonoBehaviour
 
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
-        else if (totalTime < 0)
+        else
         {
-            timerText.text = "Times up!";
+            timerText.text = "Time's up!";
             totalTime = 0;
-            SceneManager.LoadScene(0, LoadSceneMode.Additive);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart scene
         }
     }
 }
-    
