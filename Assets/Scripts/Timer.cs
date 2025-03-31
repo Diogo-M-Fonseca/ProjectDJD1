@@ -1,10 +1,14 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.Mathf;
 public class CountdownTimer : MonoBehaviour
 {
-    public float totalTime = 90;
-    public Text timerText;
+    [SerializeField]
+    private float totalTime = 90;
+    [SerializeField]
+    private Text timerText;
 
     void Update()
     {
@@ -20,7 +24,8 @@ public class CountdownTimer : MonoBehaviour
         else if (totalTime < 0)
         {
             timerText.text = "Times up!";
-            totalTime = 0;  
+            totalTime = 0;
+            SceneManager.LoadScene(0, LoadSceneMode.Additive);
         }
     }
 }
