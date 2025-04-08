@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using OkapiKit;
 using Unity.Mathematics;
 using Unity.VisualScripting.ReorderableList;
@@ -14,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform GroundCheck; // The GroundCheck GameObject reference
     public float groundCheckRadius = 0.2f; // The radius of the GroundCheck circle (adjust as needed)
     public LayerMask groundLayer; // The layer mask for ground objects
-
     private Quaternion initialRotation; // To store the player's initial rotation
 
     void Start()

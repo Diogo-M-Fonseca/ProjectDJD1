@@ -1,17 +1,33 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public class SceneChangerWithInput : MonoBehaviour
 {
-    [SerializeField]
-    private string sceneToLoad; // Scene name as a string
+    public Tilemap sceneChangeTilemap;
+    public TileBase warpTile;
+    public string sceneToLoad;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public GameObject enterPromptUI;
+
+    void Update()
     {
-        if (other.CompareTag("Player")) // Check if the colliding object has the "Player" tag
+        enterPromptUI.SetActive(false); 
+        
+        Vector3Int playerCellPos = sceneChangeTilemap.WorldToCell(transform.position);
+        Vector3Int aboveCellPos = new Vector3Int(playerCellPos.x, playerCellPos.y + 1, playerCellPos.z);
+
+        TileBase currentTile = sceneChangeTilemap.GetTile(aboveCellPos);
+
+        if (currentTile == warpTile)
         {
-            Debug.Log("Player has entered the trigger zone. Loading scene: " + sceneToLoad);
-            SceneManager.LoadScene(sceneToLoad); // Load the scene by name (string)
+            enterPromptUI.SetActive(true);
         }
+
+        if (currentTile == warpTile && Input.GetKeyDown(KeyCode.E))
+        {
+        SceneManager.LoadScene(sceneToLoad);
+        }
+
     }
 }
