@@ -6,9 +6,9 @@ public class KnifeAttack : MonoBehaviour
     private GameObject attackArea = default;  
     public bool attacking = false; 
     public float timeToAttack = 0.25f;  
-    public float timer = 0f; 
+     private float lastAttackTime = 0f; 
 
-    private float lastAttackTime = 0f;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +25,11 @@ public class KnifeAttack : MonoBehaviour
 
         if(attacking)
         {
-            timer += Time.deltaTime;
+            lastAttackTime += Time.deltaTime;
 
-            if(timer >= timeToAttack)
+            if(lastAttackTime >= timeToAttack)
             {
-                timer = 0;
+                lastAttackTime = 0;
                 attacking = false;
                 attackArea.SetActive(attacking);
             }
