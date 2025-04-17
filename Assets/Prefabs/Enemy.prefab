@@ -11,16 +11,12 @@ GameObject:
   - component: {fileID: 426403198502018234}
   - component: {fileID: 3201414479262003128}
   - component: {fileID: 2096351230601911042}
-  - component: {fileID: 1871997923590211929}
   - component: {fileID: 6307571620741680576}
-  - component: {fileID: 1581671532851854791}
-  - component: {fileID: 1879194422342805841}
-  - component: {fileID: 7751671828520056197}
-  - component: {fileID: 6971742425524244879}
-  - component: {fileID: 644343666281100603}
+  - component: {fileID: 7867685398849412538}
+  - component: {fileID: -8676066168709937539}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,23 +118,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1871997923590211929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416090423277301137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6fc8a1e9dd21634a9cb00402422ec6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: 
-  description: 
-  hypertags:
-  - {fileID: 11400000, guid: ad6c8e1f2c509e549a047cadd8e9f23c, type: 2}
 --- !u!70 &6307571620741680576
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +155,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.0000001, y: 2}
   m_Direction: 0
---- !u!114 &1581671532851854791
+--- !u!114 &7867685398849412538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,21 +164,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416090423277301137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e75877c0562c0e49a1475541c319262, type: 3}
+  m_Script: {fileID: 11500000, guid: cb0bfa06a1d1181468a52958d3bf79ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: Destroys this object
-  description: 
-  enableAction: 1
-  hasTags: 0
-  actionTags: []
-  hasConditions: 0
-  actionConditions: []
-  target: 0
-  targetObject: {fileID: 0}
-  tags: []
---- !u!114 &1879194422342805841
+  playerPrefab: {fileID: 0}
+  detectionRange: 200
+  stopRange: 15
+  speed: 3
+--- !u!114 &-8676066168709937539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,111 +180,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416090423277301137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b66a51b7fe64c4390ac471b7df316b, type: 3}
+  m_Script: {fileID: 11500000, guid: 03713686f341b0a4ab8f0def5c62b951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: "When a collision with a trigger with tags [faca] starts:\n         
-    adds 3 to variable points\n          adds 25 to variable RageBar\n          destroys
-    this object\n"
-  description: 
-  enableTrigger: 1
-  allowRetrigger: 1
-  hasPreconditions: 0
-  preConditions: []
-  actions:
-  - delay: 0
-    action: {fileID: 7751671828520056197}
-  - delay: 0
-    action: {fileID: 644343666281100603}
-  - delay: 0
-    action: {fileID: 1581671532851854791}
-  isTrigger: 1
-  eventType: 0
-  tags:
-  - {fileID: 11400000, guid: 7706f2b0ba19fba4aa27a48cb6760965, type: 2}
---- !u!114 &7751671828520056197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416090423277301137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: Adds 3 to variable points
-  description: 
-  enableAction: 1
-  hasTags: 0
-  actionTags: []
-  hasConditions: 0
-  actionConditions: []
-  valueHandler: {fileID: 0}
-  variable: {fileID: 11400000, guid: d18a0b4475763614e8c37f295d3919ec, type: 2}
-  operation: 2
-  changeValue: 3
-  changeValueHandler: {fileID: 0}
-  changeVariable: {fileID: 0}
-  scaleWithTime: 0
---- !u!114 &6971742425524244879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416090423277301137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821a52a563d1854e98869fa6bd62ee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: 'Follows the closest object tagged with [Player], at 300 units per
-    second.
-
-'
-  description: 
-  hasConditions: 0
-  conditions: []
-  speed: 300
-  targetType: 0
-  targetTag: {fileID: 11400000, guid: 15edcc3cfa00a4e2fba5f80bcf8774c8, type: 2}
-  targetObject: {fileID: 0}
-  stoppingDistance: -1
-  relativeMovement: 0
-  rotateTowardsDirection: 0
-  alignAxis: 0
-  maxRotationSpeed: 360
-  cameraObject: {fileID: 0}
-  cameraTag: {fileID: 0}
---- !u!114 &644343666281100603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416090423277301137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb749f9fa0d36840b27121330707a95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: Adds 5 to variable RageBar
-  description: 
-  enableAction: 1
-  hasTags: 0
-  actionTags: []
-  hasConditions: 0
-  actionConditions: []
-  valueHandler: {fileID: 0}
-  variable: {fileID: 11400000, guid: b2c0fd39054636c4c9bbd0cede0faa0d, type: 2}
-  operation: 2
-  changeValue: 5
-  changeValueHandler: {fileID: 0}
-  changeVariable: {fileID: 0}
-  scaleWithTime: 0
