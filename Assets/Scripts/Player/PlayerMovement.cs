@@ -1,6 +1,4 @@
-using JetBrains.Annotations;
-using OkapiKit;
-using Unity.Mathematics;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer; // The layer mask for ground objects
     private Quaternion initialRotation; // To store the player's initial rotation
 
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Movement_X (Left and Right)
         float moveX = Input.GetAxis("Horizontal");
-        rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y);
 
         // Flip logic using transform.right to check the direction
         if (moveX < 0 && transform.right.x > 0) // If moving left but facing right
@@ -50,6 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0); // Stop upward movement when jump button is released
         }
+
     }
 }
-

@@ -2,88 +2,102 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject playerPrefab; // The reference to the Player prefab
-    public float detectionRange = 10f;  // Distance the enemy can detect the player (smaller radius to start chasing)
-    public float stopRange = 15f;  // Distance the enemy will stop chasing (larger radius)
-    public float speed = 3f;  // How fast the enemy moves toward the player
+    public float detectionRange = 10f;  // Distance the enemy can detect the player (start chasing)
+    public float stopRange = 15f;        // Distance the enemy will stop chasing
+    public float speed = 3f;             // Enemy movement speed
 
-    private GameObject player; // The instance of the player in the scene
-    private bool isChasing = false; // Flag to check if the enemy is currently chasing the player
+    private GameObject[] players;        // Array to store all players found in the scene
+    private GameObject targetPlayer;     // The player the enemy is currently targeting
+    private bool isChasing = false;       // Is the enemy currently chasing?
 
     private void Start()
     {
-        // Search for the player prefab in the scene
-        player = FindPlayerPrefab();
+        players = FindPlayers();          // Find all players
+        ChooseTargetPlayer();             // Pick one to target
     }
 
     private void Update()
     {
-        // If the player is not found, exit early
-        if (player == null)
+        if (targetPlayer == null)
         {
-            Debug.Log("Player prefab not found in the scene.");
+            Debug.Log("No target player selected.");
             return;
         }
 
-        // Check distance to the player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.transform.position);
         Debug.Log("Distance to Player: " + distanceToPlayer);
 
-        // If the player is within the stop range, check if we should stop chasing
         if (distanceToPlayer > stopRange && isChasing)
         {
             StopChasing();
         }
 
-        // If the player is within the detection range, chase the player
         if (distanceToPlayer <= detectionRange && !isChasing)
         {
             StartChasing();
         }
 
-        // If the enemy is chasing, move towards the player
         if (isChasing)
         {
             ChasePlayer();
         }
     }
 
-    // Start chasing the player when within detection range
+    // Start chasing the player
     void StartChasing()
     {
         isChasing = true;
         Debug.Log("Starting to chase player!");
     }
 
-    // Stop chasing the player when outside of stop range
+    // Stop chasing the player
     void StopChasing()
     {
         isChasing = false;
         Debug.Log("Stopped chasing player!");
     }
 
-    // Move the enemy towards the player's position
+    // Move toward the targeted player
     void ChasePlayer()
     {
-        // Move the enemy towards the player's position
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        direction.y = 0;
+        Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
+        direction.y = 0; // Optional: ignore vertical movement
         transform.position += direction * speed * Time.deltaTime;
-        Debug.Log("Chasing player!"); // Debugging info: Check if the enemy is moving
+        Debug.Log("Chasing player!");
     }
 
-    // Find the Player prefab in the scene
-    GameObject FindPlayerPrefab()
+    // Find all player objects in the scene
+    GameObject[] FindPlayers()
     {
-        // Search for the player prefab in the scene
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        
-        // If multiple instances of the player prefab exist, return the first one found
-        if (playerObjects.Length > 0)
+        return GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    // Choose the closest player to target
+    void ChooseTargetPlayer()
+    {
+        if (players.Length == 0)
         {
-            return playerObjects[0]; // Returning the first instance found
+            Debug.LogWarning("No players found in the scene!");
+            return;
         }
-        
-        return null; // Return null if no player prefab is found
+
+        float closestDistance = Mathf.Infinity;
+        GameObject closestPlayer = null;
+
+        foreach (var p in players)
+        {
+            float dist = Vector3.Distance(transform.position, p.transform.position);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                closestPlayer = p;
+            }
+        }
+
+        targetPlayer = closestPlayer;
+        if (targetPlayer != null)
+        {
+            Debug.Log("Targeting player: " + targetPlayer.name);
+        }
     }
 }
