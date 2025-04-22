@@ -9,13 +9,16 @@ public class RageBar : MonoBehaviour
 
     private bool isDepleting = false;  // Whether the rage bar is currently depleting
     private PlayerMovement playerMovement;  // Reference to the player movement script
+    private PlayerMovementWithDash playerMovementWithDash;
     private float originalSpeed;  // Store the player's original speed
+    private float originalSpeedwithDash;
     private float timePassed = 0f;  // Timer to track how much time has passed
 
     private void Start()
     {
         // Find the PlayerMovement script on the player GameObject
         playerMovement = Object.FindObjectOfType<PlayerMovement>();
+        playerMovementWithDash = Object.FindObjectOfType<PlayerMovementWithDash>();
 
         if (playerMovement != null)
         {
@@ -24,6 +27,14 @@ public class RageBar : MonoBehaviour
         else
         {
             Debug.LogError("PlayerMovement script not found!");
+        }
+        if (playerMovementWithDash != null)
+        {
+            originalSpeedwithDash = playerMovementWithDash.speed;
+        }
+        else
+        {
+            Debug.LogError("PlayerMovementWithDash script not found!");
         }
     }
 
@@ -85,6 +96,19 @@ public class RageBar : MonoBehaviour
             {
                 // Reset the player's speed when rage reaches 0
                 playerMovement.speed = originalSpeed;  // Reset speed to original value
+            }
+        }
+        if (playerMovementWithDash != null)
+        {
+            if (currentRage > 0)
+            {
+                // Increase the player's speed as the RageBar depletes
+                playerMovementWithDash.speed = originalSpeedwithDash * speedBoostAmount;  // Boost speed
+            }
+            else
+            {
+                // Reset the player's speed when rage reaches 0
+                playerMovementWithDash.speed = originalSpeedwithDash;  // Reset speed to original value
             }
         }
     }

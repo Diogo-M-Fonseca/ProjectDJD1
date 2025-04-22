@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Movement_X (Left and Right)
         float moveX = Input.GetAxis("Horizontal");
+        rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y); // Apply movement
 
         // Flip logic using transform.right to check the direction
         if (moveX < 0 && transform.right.x > 0) // If moving left but facing right
@@ -50,4 +51,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
 }
