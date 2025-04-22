@@ -12,4 +12,9 @@ public class StartMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OpenLvl(int levelID)
+    {
+        SceneManager.LoadSceneAsync(levelID);
+    }
 }
