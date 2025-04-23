@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpTime = 0.5f;
     public float jumpTime = 0;
     private Rigidbody2D rigidbody;
-    private bool isGrounded;
+    public bool isGrounded;
     public Transform GroundCheck; // The GroundCheck GameObject reference
     public float groundCheckRadius = 0.2f; // The radius of the GroundCheck circle (adjust as needed)
     public LayerMask groundLayer; // The layer mask for ground objects
@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0); // Stop upward movement when jump button is released
         }
+ 
 
     }
 
