@@ -9,6 +9,10 @@ public class Timer : MonoBehaviour
     private float totalTime = 90;
     [SerializeField]
     private TextMeshProUGUI timerText;  // Changed to TextMeshProUGUI
+    [SerializeField]
+    private GameObject highScoreScreen;
+    [SerializeField]
+    private Scoreboard Scoreboard;
 
     void Start()
     {
@@ -30,7 +34,11 @@ public class Timer : MonoBehaviour
         {
             timerText.text = "Time's up!";
             totalTime = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart scene
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            playerObject.SetActive(false);
+            highScoreScreen.SetActive(true);
+            Scoreboard.HighScoreUpdate();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Restart scene
         }
     }
 }
