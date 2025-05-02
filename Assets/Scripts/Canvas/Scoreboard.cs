@@ -37,7 +37,7 @@ public class Scoreboard : MonoBehaviour
         {
             PlayerPrefs.SetInt("SavedHighScore", score);
         }
-        finalScoreText.text = score.ToString();
-        highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString();
+        finalScoreText.text = "Score: " + score.ToString();
+        highScoreText.text = "HighScore: " + PlayerPrefs.GetInt("SavedHighScore").ToString();
     }
 }
