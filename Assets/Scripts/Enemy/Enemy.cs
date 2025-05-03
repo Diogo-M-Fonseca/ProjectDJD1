@@ -4,12 +4,15 @@ using UnityEngine.SceneManagement;  // For scene management
 
 public class Enemy : MonoBehaviour
 {
-    public float detectionRange = 10f;   // Start chasing at this distance
-    public float stopRange = 15f;        // Stop chasing beyond this distance
-    public float speed = 3f;             // Movement speed
-    public float attackRange = 2f;       // Attack when within this distance
+    private float detectionRange = 10f;   // Start chasing at this distance
+    private float stopRange = 15f;        // Stop chasing beyond this distance
+    private float speed = 3f;             // Movement speed
+    private float attackRange = 2f;       // Attack when within this distance
     private bool isAttacking = false;    // Attack flag
-    public GameObject attackArea;        // Reference to hitbox GameObject (this includes the sprite)
+    [SerializeField]
+    private GameObject attackArea;        // Reference to hitbox GameObject (this includes the sprite)
+    [SerializeField]
+    private GameObject highscore;
 
     private GameObject[] players;        // All players in scene
     private GameObject targetPlayer;     // Closest player
@@ -173,10 +176,9 @@ public class Enemy : MonoBehaviour
         // Check if the collider belongs to the closest player
         if (other.gameObject == targetPlayer)
         {
-            Debug.Log("Player hit! Resetting scene...");
-
-            // Reset the scene
-            ReloadScene();
+            Debug.Log("Player hit!");
+            highscore.SetActive(true);
+            
         }
     }
 
