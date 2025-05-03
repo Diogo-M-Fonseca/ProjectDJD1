@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementWithDash : MonoBehaviour
 {
@@ -101,5 +102,4 @@ public class PlayerMovementWithDash : MonoBehaviour
     yield return new WaitForSeconds(dashingCooldown);
     canDash = true;
     }
-
 }

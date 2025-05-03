@@ -11,8 +11,8 @@ public class EnemyHP : MonoBehaviour
     private void Start()
     {
         // Find the Scoreboard and RageBar in the scene
-        scoreboard = FindObjectOfType<Scoreboard>(); // Changed to FindObjectOfType
-        rageBar = FindObjectOfType<RageBar>();  // Changed to FindObjectOfType
+        scoreboard = FindFirstObjectByType<Scoreboard>(); // Changed to FindObjectOfType
+        rageBar = FindFirstObjectByType<RageBar>();  // Changed to FindObjectOfType
 
         if (scoreboard == null)
         {

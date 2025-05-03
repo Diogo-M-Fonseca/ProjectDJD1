@@ -13,12 +13,13 @@ public class RageBar : MonoBehaviour
     private float originalSpeed;  // Store the player's original speed
     private float originalSpeedwithDash;
     private float timePassed = 0f;  // Timer to track how much time has passed
+    public bool isInvul = false;
 
     private void Start()
     {
         // Find the PlayerMovement script on the player GameObject
-        playerMovement = Object.FindObjectOfType<PlayerMovement>();
-        playerMovementWithDash = Object.FindObjectOfType<PlayerMovementWithDash>();
+        playerMovement = Object.FindFirstObjectByType<PlayerMovement>();
+        playerMovementWithDash = Object.FindFirstObjectByType<PlayerMovementWithDash>();
 
         if (playerMovement != null)
         {
@@ -44,7 +45,8 @@ public class RageBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && currentRage > 0)
         {
             isDepleting = true;  // Start depleting
-            Debug.Log("Depletion Started!");
+            isInvul = true;
+
         }
 
         // If we're depleting the rage bar, decrease it gradually over time
@@ -61,14 +63,13 @@ public class RageBar : MonoBehaviour
             {
                 currentRage = 0;
                 isDepleting = false;  // Stop depleting when the rage bar hits 0
-                Debug.Log("Rage Bar Depleted!");
+                isInvul = false;
+
             }
 
             BoostPlayerSpeed();  // Boost the player's speed while depleting the rage
         }
 
-        // Debugging log to track the current rage value
-        Debug.Log("Current Rage: " + currentRage);
     }
 
     // Method to add rage points to the bar

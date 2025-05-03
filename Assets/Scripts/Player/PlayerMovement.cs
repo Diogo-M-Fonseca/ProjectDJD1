@@ -1,5 +1,9 @@
 using System.Collections;
+using JetBrains.Annotations;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius = 0.2f; // The radius of the GroundCheck circle (adjust as needed)
     public LayerMask groundLayer; // The layer mask for ground objects
     private Quaternion initialRotation; // To store the player's initial rotation
+    
 
 
     void Start()
@@ -23,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        {
         // Check if the player is grounded using the GroundCheck collider
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, groundLayer);
 
@@ -49,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0); // Stop upward movement when jump button is released
         }
- 
 
     }
-
 }
+}
+
