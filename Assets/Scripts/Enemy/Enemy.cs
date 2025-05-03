@@ -4,10 +4,15 @@ using UnityEngine.SceneManagement;  // For scene management
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
     private float detectionRange = 10f;   // Start chasing at this distance
+    [SerializeField]
     private float stopRange = 15f;        // Stop chasing beyond this distance
+    [SerializeField]
     private float speed = 3f;             // Movement speed
+    [SerializeField]
     private float attackRange = 2f;       // Attack when within this distance
+    [SerializeField]
     private bool isAttacking = false;    // Attack flag
     [SerializeField]
     private GameObject attackArea;        // Reference to hitbox GameObject (this includes the sprite)
