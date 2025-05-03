@@ -16,6 +16,11 @@ public class RangedEnemy : MonoBehaviour
     private float shootCooldown = 0f;   // Cooldown for shooting
     public float shootRate = 1f;        // Rate of fire (bullets per second)
 
+    private bool isBlocked = false;     // Is the enemy blocked by a wall?
+
+    [SerializeField]
+    private Collider2D wallChecker;     // Wall checker collider (set this in the Inspector)
+
     private void Start()
     {
         players = FindPlayers();
@@ -43,20 +48,20 @@ public class RangedEnemy : MonoBehaviour
             return; // Don't chase or attack while shooting
         }
 
-        // Stop chasing if player is too far
-        if (distanceToPlayer > stopRange && isChasing)
+        // Stop chasing if player is too far or if blocked by a wall
+        if (distanceToPlayer > stopRange && isChasing || isBlocked)
         {
             StopChasing();
         }
 
-        // Start chasing if player is close enough
-        if (distanceToPlayer <= detectionRange && !isChasing)
+        // Start chasing if player is close enough and not blocked by wall
+        if (distanceToPlayer <= detectionRange && !isChasing && !isBlocked)
         {
             StartChasing();
         }
 
-        // Chase if we're in chase mode
-        if (isChasing)
+        // Chase if we're in chase mode and not blocked by wall
+        if (isChasing && !isBlocked)
         {
             ChasePlayer();
         }
@@ -150,6 +155,26 @@ public class RangedEnemy : MonoBehaviour
         else if (direction < 0 && transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    // Check if the wall checker hits an obstacle (wall or ground)
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isBlocked = true;
+            StopChasing(); // Stop chasing if blocked
+            Debug.Log("Wall detected. Stopping chase.");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isBlocked = false;
+            Debug.Log("Wall no longer blocking.");
         }
     }
 }

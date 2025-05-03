@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour
     private GameObject[] players;        // All players in scene
     private GameObject targetPlayer;     // Closest player
     private bool isChasing = false;      // Are we currently chasing?
+    private bool isBlocked = false;      // Is the enemy blocked by a wall?
+
+    [SerializeField]
+    private Collider2D wallChecker;     // Wall checker collider
 
     private void Start()
     {
@@ -49,8 +53,8 @@ public class Enemy : MonoBehaviour
             return; // Stop chasing while attacking
         }
 
-        // Stop chasing if player is too far
-        if (distanceToPlayer > stopRange && isChasing)
+        // Stop chasing if player is too far or if blocked by a wall
+        if (distanceToPlayer > stopRange && isChasing || isBlocked)
         {
             StopChasing();
         }
@@ -62,7 +66,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Chase if we're in chase mode
-        if (isChasing)
+        if (isChasing && !isBlocked)
         {
             ChasePlayer();
         }
@@ -122,39 +126,38 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator AttackPlayer()
     {
-    isAttacking = true;
-    Debug.Log("Preparing to attack...");
+        isAttacking = true;
+        Debug.Log("Preparing to attack...");
 
-    yield return new WaitForSeconds(1f); // Wind-up delay
+        yield return new WaitForSeconds(1f); // Wind-up delay
 
-    // Activate the visual or hitbox if needed
-    attackArea.SetActive(true);
-    Debug.Log("Attack area activated!");
+        // Activate the visual or hitbox if needed
+        attackArea.SetActive(true);
+        Debug.Log("Attack area activated!");
 
-    // Check for player hit using OverlapCircle
-    float hitRadius = 0.5f; // Adjust to match your weapon hit size
-    Collider2D hit = Physics2D.OverlapCircle(attackArea.transform.position, hitRadius, LayerMask.GetMask("Player"));
+        // Check for player hit using OverlapCircle
+        float hitRadius = 0.5f; // Adjust to match your weapon hit size
+        Collider2D hit = Physics2D.OverlapCircle(attackArea.transform.position, hitRadius, LayerMask.GetMask("Player"));
 
-    if (hit != null && hit.gameObject == targetPlayer)
-    {
-        Debug.Log("Player hit by enemy attack!");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        if (hit != null && hit.gameObject == targetPlayer)
+        {
+            Debug.Log("Player hit by enemy attack!");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            Debug.Log("Attack missed or player was out of range.");
+        }
+
+        yield return new WaitForSeconds(0.3f); // Duration of visible hitbox
+
+        attackArea.SetActive(false);
+        Debug.Log("Attack area deactivated!");
+
+        yield return new WaitForSeconds(0.5f); // Cooldown before next possible attack
+
+        isAttacking = false;
     }
-    else
-    {
-        Debug.Log("Attack missed or player was out of range.");
-    }
-
-    yield return new WaitForSeconds(0.3f); // Duration of visible hitbox
-
-    attackArea.SetActive(false);
-    Debug.Log("Attack area deactivated!");
-
-    yield return new WaitForSeconds(0.5f); // Cooldown before next possible attack
-
-    isAttacking = false;
-    }
-
 
     // Flip the enemy's sprite to face the player (side-scrolling version)
     private void FlipEnemySpriteTowardPlayer()
@@ -183,7 +186,27 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Player hit!");
             highscore.SetActive(true);
-            
+        }
+    }
+
+    // Check if the wall checker hits an obstacle (wall or ground)
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        // If we hit something on the "Ground" layer, stop chasing
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isBlocked = true;
+            StopChasing(); // Stop chasing if blocked
+            Debug.Log("Wall detected. Stopping chase.");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isBlocked = false;
+            Debug.Log("Wall no longer blocking.");
         }
     }
 
