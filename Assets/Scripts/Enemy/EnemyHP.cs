@@ -7,6 +7,7 @@ public class EnemyHP : MonoBehaviour
 
     private Scoreboard scoreboard;
     private RageBar rageBar;  // Separate RageBar script for the rage points
+    private EnemySpawner enemySpawner;
 
     private void Start()
     {
@@ -45,6 +46,13 @@ public class EnemyHP : MonoBehaviour
 
             // Destroy this enemy
             Destroy(gameObject);
+            enemySpawner = FindObjectOfType<EnemySpawner>();
+            enemySpawner.enemyInRoom--;
+            if (enemySpawner.spawnTime <= 0 && enemySpawner.enemyInRoom <= 0);
+            {
+                enemySpawner.spawnerDone = true;
+            }
+
         }
     }
 }

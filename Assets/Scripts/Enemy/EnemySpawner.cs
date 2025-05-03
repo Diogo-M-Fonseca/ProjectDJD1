@@ -4,30 +4,58 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject EnemyPrefab;
-
+    private GameObject[] spawnPoints;
+    [SerializeField] 
+    private GameObject[] enemies;
     [SerializeField]
-    private float EnemyInterval = 3.5f;
-
+    private GameObject currentPoint;
     [SerializeField]
-    private Transform Spawner;
+    private int index;
+    [SerializeField]
+    private float minTimeToSpawn;
+    [SerializeField]
+    private float maxTimeToSpawn;
+    [SerializeField]
+    private bool canSpawn;
+    public float spawnTime;
+    public int enemyInRoom;
+    public bool spawnerDone;
+    [SerializeField]
+    private GameObject spawnerDoneGameObject;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        StartCoroutine(spawnEnemy(EnemyInterval, EnemyPrefab));
+        Invoke("SpawnEnemy", 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (canSpawn)
+        {
+            spawnTime -= Time.deltaTime;
+            if (spawnTime < 0)
+            {
+                spawnTime = 5;
+            }
+        }
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    void SpawnEnemy()
     {
-        yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(-383, 65, 0), Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));
+        index = Random.Range(0, spawnPoints.Length);
+        currentPoint = spawnPoints[index];
+        float timeBtwSpawns = Random.Range(minTimeToSpawn, maxTimeToSpawn);
+
+        if (canSpawn)
+        {
+            Instantiate(enemies[Random.Range(0, enemies.Length)], currentPoint.transform.position, Quaternion.identity);
+            enemyInRoom++;
+        }
+
+        Invoke("SpawnEnemy", timeBtwSpawns);
+        if (spawnerDone)
+        {
+            spawnerDoneGameObject.SetActive(true);
+        }
     }
 }
