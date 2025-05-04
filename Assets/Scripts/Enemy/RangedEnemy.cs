@@ -17,9 +17,11 @@ public class RangedEnemy : MonoBehaviour
     public float shootRate = 1f;        // Rate of fire (bullets per second)
 
     private bool isBlocked = false;     // Is the enemy blocked by a wall?
-
+    
     [SerializeField]
     private Collider2D wallChecker;     // Wall checker collider (set this in the Inspector)
+
+    private float shootDelayTimer = 0f; // Timer to track the delay before shooting
 
     private void Start()
     {
@@ -36,15 +38,22 @@ public class RangedEnemy : MonoBehaviour
         // Prioritize shooting if in range
         if (distanceToPlayer <= shootRange)
         {
-            if (shootCooldown <= 0f) // If the cooldown is finished, shoot
+            // Increase the timer by the time passed since the last frame
+            shootDelayTimer += Time.deltaTime;
+
+            // Check if the 1 second delay has passed and the cooldown is finished
+            if (shootDelayTimer >= 1f && shootCooldown <= 0f)
             {
                 ShootAtPlayer();
                 shootCooldown = shootRate;  // Reset cooldown based on shootRate
+                shootDelayTimer = 0f;  // Reset the delay timer after shooting
             }
             else
             {
-                shootCooldown -= Time.deltaTime;  // Decrease cooldown by time passed
+                // If the delay hasn't passed yet, decrease the cooldown as usual
+                shootCooldown -= Time.deltaTime;  
             }
+
             return; // Don't chase or attack while shooting
         }
 
