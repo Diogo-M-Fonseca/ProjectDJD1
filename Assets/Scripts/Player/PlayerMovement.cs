@@ -1,8 +1,4 @@
-using System.Collections;
-using JetBrains.Annotations;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class PlayerMovement : MonoBehaviour

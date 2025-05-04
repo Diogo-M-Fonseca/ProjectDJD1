@@ -1,5 +1,3 @@
-using OkapiKit;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class BatAttack : MonoBehaviour

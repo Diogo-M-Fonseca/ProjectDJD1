@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Attack area activated!");
 
         // Check for player hit using OverlapCircle
-        float hitRadius = 0.5f; // Adjust to match your weapon hit size
+        float hitRadius = 10f; // Adjust to match your weapon hit size
         Collider2D hit = Physics2D.OverlapCircle(attackArea.transform.position, hitRadius, LayerMask.GetMask("Player"));
 
         if (hit != null && hit.gameObject == targetPlayer)
