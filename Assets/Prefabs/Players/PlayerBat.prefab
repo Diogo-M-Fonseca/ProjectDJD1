@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -138,6 +138,7 @@ MonoBehaviour:
   jumpForce: 350
   maxJumpTime: 0.5
   jumpTime: 0
+  isGrounded: 0
   GroundCheck: {fileID: 2805907350889606417}
   groundCheckRadius: 10
   groundLayer:
@@ -235,6 +236,7 @@ MonoBehaviour:
   maxRage: 50
   depletionTime: 5
   speedBoostAmount: 1.5
+  isInvul: 0
 --- !u!1 &1011731056672251442
 GameObject:
   m_ObjectHideFlags: 0
