@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float speed = 5f;  // Bullet speed
+    [SerializeField]
+    private float speed = 5f;  // Bullet speed
     private Vector3 direction;
-
-    public float lifetime = 3f;  // Bullet lifetime in seconds
+    [SerializeField]
+    private float lifetime = 3f;  // Bullet lifetime in seconds
 
     // Initialize the bullet with a direction
     public void Initialize(Vector3 dir)

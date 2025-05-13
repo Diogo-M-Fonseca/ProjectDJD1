@@ -11,7 +11,10 @@ public class ShotgunAttack : MonoBehaviour
     private float attackTimer = 0f;
     private float cooldownTimer = 0f;
     public bool shotgunAttacking;
-
+    [SerializeField]
+    private float recoilXMultiplier = 0f;
+    [SerializeField]
+    private float recoilYMultiplier = 0f;
     [SerializeField]
     private float bullets = 2f;
     [SerializeField]
@@ -19,8 +22,9 @@ public class ShotgunAttack : MonoBehaviour
     [SerializeField]
     private float reloadTime = 1f;
     [SerializeField]
-    private float recoilForce = 5f;
-
+    private float recoilForce = 0f;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
     private bool reloading = false;
     private Rigidbody2D rb;
 
@@ -37,7 +41,7 @@ public class ShotgunAttack : MonoBehaviour
     // Automatically find the BulletDisplay script in the scene
     if (bulletDisplay == null)
     {
-        bulletDisplay = FindObjectOfType<BulletDisplay>();
+        bulletDisplay = FindFirstObjectByType<BulletDisplay>();
     }
 
     // Check if the BulletDisplay script was found
@@ -103,49 +107,61 @@ public class ShotgunAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (bullets > 0)
-        {
-            attacking = true;
-            attackArea.SetActive(true);
-            bullets -= 1;
-            bulletDisplay.UpdateBulletCount(bullets);
-            if (bullets < 0) bullets = 0;
+    if (bullets > 0)
+    {
+        attacking = true;
+        attackArea.SetActive(true);
+        bullets -= 1;
+        bulletDisplay.UpdateBulletCount(bullets);
+        if (bullets < 0) bullets = 0;
 
-            StartCoroutine(ApplyRecoil()); // Start recoil as a coroutine
+        ShootConeBullets(); // 👈 Fire 3 bullets in a cone
 
-            cooldownTimer = attackCooldown;
-        }
-
-        if (bullets == 0)
-        {
-            reloading = true;
-            reloadTime = 1f;
-        }
+        StartCoroutine(ApplyRecoil()); // Start recoil as a coroutine
+        cooldownTimer = attackCooldown;
     }
+
+    if (bullets == 0)
+    {
+        reloading = true;
+        reloadTime = 1f;
+    }
+    }
+
 
     private IEnumerator ApplyRecoil()
     {
-        // Get the world position of the mouse cursor
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = (mousePosition - transform.position).normalized;
+    // Get the world position of the mouse cursor
+    Vector3 mouseScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane);
+    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
 
-        // Invert the direction (opposite to where the mouse is pointing)
-        Vector2 recoilDirection = new Vector2(-direction.x, -direction.y);
+    // Calculate direction from player to mouse
+    Vector2 direction = (mousePosition - transform.position).normalized;
 
-        // Apply different recoil based on whether the player is grounded or airborne
-        if (playerMovement.isGrounded)
-        {
-            // Apply recoil with reduced strength when grounded (in the opposite direction of mouse)
-            rb.AddForce(recoilDirection * recoilForce * 1f, ForceMode2D.Impulse);  // Full recoil on ground
-        }
-        else
-        {
-            // Apply full recoil when airborne
-            rb.AddForce(recoilDirection * recoilForce * 1.5f, ForceMode2D.Impulse); // More recoil in the air
-        }
+    // Invert direction for recoil (this is the main recoil direction)
+    Vector2 recoilDirection = -direction;
 
-        // Wait for a short time to simulate recoil effect
-        yield return new WaitForSeconds(0.1f); // Adjust the time to control the recoil duration
+    // Apply different multipliers to X and Y without normalizing
+    Vector2 customRecoil = new Vector2(
+        recoilDirection.x * recoilXMultiplier,
+        recoilDirection.y * recoilYMultiplier
+    );
+
+    // Final recoil vector, scaled by recoil force and grounded state
+    float recoilMultiplier = playerMovement.isGrounded ? 1f : 1.5f;
+    Vector2 finalRecoil = customRecoil * recoilForce * recoilMultiplier;
+
+    // Debugging: Check recoil force
+    Debug.Log("Final Recoil: " + finalRecoil);
+
+    // Apply the force as an impulse
+    rb.AddForce(finalRecoil, ForceMode2D.Impulse);  // Use Impulse for sudden recoil
+
+    // Lock player movement briefly after recoil (optional)
+    playerMovement.LockMovementTemporarily();
+
+    // Optional delay for recoil effect
+    yield return new WaitForSeconds(0.1f);  // Allow some time for recoil to take effect
     }
 
     private void Reload()
@@ -154,4 +170,35 @@ public class ShotgunAttack : MonoBehaviour
         reloading = false;
         bulletDisplay.UpdateBulletCount(bullets);
     }
+    private void ShootConeBullets()
+    {
+    int bulletCount = 3;
+    float spreadAngle = 30f;
+    float startAngle = -spreadAngle / 2f;
+    float angleStep = spreadAngle / (bulletCount - 1);
+
+    // Get base aim angle from firePoint (this ensures the bullet follows firePoint's rotation)
+    float baseAngle = firePoint.transform.eulerAngles.z;
+
+    for (int i = 0; i < bulletCount; i++)
+    {
+        float angleOffset = startAngle + i * angleStep;
+        float finalAngle = baseAngle + angleOffset;
+
+        // Convert angle to radians and calculate direction
+        float rad = finalAngle * Mathf.Deg2Rad;
+        Vector2 shootDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+
+        // Instantiate the bullet with the rotation of the firePoint
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        // Set the bullet's direction for movement logic in Bullet script
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDirection(shootDir);
+        }
+    }
+    }
+
 }
