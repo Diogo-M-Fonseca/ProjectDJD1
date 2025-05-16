@@ -1,58 +1,70 @@
 using UnityEngine;
 
-
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
     public float maxJumpTime = 0.5f;
     public float jumpTime = 0;
+
     private Rigidbody2D rigidbody;
     public bool isGrounded;
-    public Transform GroundCheck; // The GroundCheck GameObject reference
-    public float groundCheckRadius = 0.2f; // The radius of the GroundCheck circle (adjust as needed)
-    public LayerMask groundLayer; // The layer mask for ground objects
-    private Quaternion initialRotation; // To store the player's initial rotation
-    
+    public Transform GroundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+    private Quaternion initialRotation;
 
+    private float recoilLockTimer = 0f; // Timer to prevent input during recoil
+    public float recoilLockDuration = 0.1f; // Duration to pause movement after recoil
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        initialRotation = transform.rotation; // Store the initial rotation
+        initialRotation = transform.rotation;
     }
 
     void Update()
     {
-        {
-        // Check if the player is grounded using the GroundCheck collider
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, groundLayer);
 
-        // Movement_X (Left and Right)
+        // Reduce recoil lock timer
+        if (recoilLockTimer > 0)
+        {
+            recoilLockTimer -= Time.deltaTime;
+        }
+
         float moveX = Input.GetAxis("Horizontal");
-        rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y); // Apply movement
 
-        // Flip logic using transform.right to check the direction
-        if (moveX < 0 && transform.right.x > 0) // If moving left but facing right
+        // Only apply movement if not locked by recoil
+        if (recoilLockTimer <= 0)
         {
-            transform.rotation = initialRotation * Quaternion.Euler(0f, 180f, 0f); // Flip character
-        }
-        else if (moveX > 0 && transform.right.x < 0) // If moving right but facing left
-        {
-            transform.rotation = initialRotation * Quaternion.Euler(0f, 0f, 0f); // Reset rotation to original
+            rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y);
         }
 
-        // Movement_Jump (Upward)
+        // Flip logic
+        if (moveX < 0 && transform.right.x > 0)
+        {
+            transform.rotation = initialRotation * Quaternion.Euler(0f, 180f, 0f);
+        }
+        else if (moveX > 0 && transform.right.x < 0)
+        {
+            transform.rotation = initialRotation * Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce); // Jump force applied only on the Y-axis
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
         }
         if (Input.GetButtonUp("Jump") && rigidbody.linearVelocity.y > 0)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0); // Stop upward movement when jump button is released
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0);
         }
+    }
 
+    // Call this from recoil script after applying recoil
+    public void LockMovementTemporarily()
+    {
+        recoilLockTimer = recoilLockDuration;
     }
 }
-}
-
