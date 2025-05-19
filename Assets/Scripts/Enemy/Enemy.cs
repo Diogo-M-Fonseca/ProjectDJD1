@@ -118,22 +118,16 @@ public class Enemy : MonoBehaviour
         }
 
         targetPlayer = closestPlayer;
-        if (targetPlayer != null)
-        {
-            Debug.Log("Targeting player: " + targetPlayer.name);
-        }
     }
 
     private IEnumerator AttackPlayer()
     {
         isAttacking = true;
-        Debug.Log("Preparing to attack...");
 
         yield return new WaitForSeconds(1f); // Wind-up delay
 
         // Activate the visual or hitbox if needed
         attackArea.SetActive(true);
-        Debug.Log("Attack area activated!");
 
         // Check for player hit using OverlapCircle
         float hitRadius = 10f; // Adjust to match your weapon hit size
@@ -141,18 +135,12 @@ public class Enemy : MonoBehaviour
 
         if (hit != null && hit.gameObject == targetPlayer)
         {
-            Debug.Log("Player hit by enemy attack!");
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            Debug.Log("Attack missed or player was out of range.");
         }
 
         yield return new WaitForSeconds(0.3f); // Duration of visible hitbox
 
         attackArea.SetActive(false);
-        Debug.Log("Attack area deactivated!");
 
         yield return new WaitForSeconds(0.5f); // Cooldown before next possible attack
 
@@ -184,7 +172,6 @@ public class Enemy : MonoBehaviour
         // Check if the collider belongs to the closest player
         if (other.gameObject == targetPlayer)
         {
-            Debug.Log("Player hit!");
             highscore.SetActive(true);
         }
     }
@@ -197,7 +184,6 @@ public class Enemy : MonoBehaviour
         {
             isBlocked = true;
             StopChasing(); // Stop chasing if blocked
-            Debug.Log("Wall detected. Stopping chase.");
         }
     }
 
@@ -206,7 +192,6 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isBlocked = false;
-            Debug.Log("Wall no longer blocking.");
         }
     }
 

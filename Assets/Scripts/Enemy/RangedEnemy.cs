@@ -122,10 +122,6 @@ public class RangedEnemy : MonoBehaviour
         }
 
         targetPlayer = closestPlayer;
-        if (targetPlayer != null)
-        {
-            Debug.Log("Targeting player: " + targetPlayer.name);
-        }
     }
 
     void ShootAtPlayer()

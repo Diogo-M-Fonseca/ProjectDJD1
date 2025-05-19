@@ -4,19 +4,24 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 2f;
-
-    private Vector2 moveDirection;
     private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        // Ensure Rigidbody2D isn't sleeping (critical for consistent movement)
+        rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+    }
 
     public void SetDirection(Vector2 direction)
     {
-        moveDirection = direction.normalized;
+        direction = direction.normalized;
+        rb.linearVelocity = direction * speed;
+        Debug.Log($"Applied Velocity: {rb.linearVelocity}"); // 👈 Verify velocity is correct
     }
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = moveDirection * speed;
         Destroy(gameObject, lifetime);
     }
 }
