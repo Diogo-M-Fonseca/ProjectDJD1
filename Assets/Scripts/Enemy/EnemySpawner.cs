@@ -1,8 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Spawner;
     [SerializeField]
     private GameObject[] spawnPoints;
     [SerializeField] 
@@ -16,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float maxTimeToSpawn;
     [SerializeField]
-    private bool canSpawn;
+    private bool canSpawn = false;
     public float spawnTime;
     public int enemyInRoom;
     public bool spawnerDone;
@@ -25,7 +28,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        Invoke("SpawnEnemy", 0.5f);
     }
 
     private void Update()
@@ -36,15 +38,31 @@ public class EnemySpawner : MonoBehaviour
             if (spawnTime < 0)
             {
                 spawnTime = 5;
+                SpawnEnemy();
             }
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canSpawn = true;
+        }
+    }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canSpawn = false;
+        }
+    }
     void SpawnEnemy()
     {
         index = Random.Range(0, spawnPoints.Length);
         currentPoint = spawnPoints[index];
         float timeBtwSpawns = Random.Range(minTimeToSpawn, maxTimeToSpawn);
+
 
         if (canSpawn)
         {
@@ -52,7 +70,6 @@ public class EnemySpawner : MonoBehaviour
             enemyInRoom++;
         }
 
-        Invoke("SpawnEnemy", timeBtwSpawns);
         if (spawnerDone)
         {
             spawnerDoneGameObject.SetActive(true);
