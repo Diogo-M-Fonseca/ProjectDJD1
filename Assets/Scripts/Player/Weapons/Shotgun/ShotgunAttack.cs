@@ -115,7 +115,7 @@ public class ShotgunAttack : MonoBehaviour
         bulletDisplay.UpdateBulletCount(bullets);
         if (bullets < 0) bullets = 0;
 
-        ShootConeBullets(); // 👈 Fire 3 bullets in a cone
+        ShootConeBullets(); // Fire 3 bullets in a cone
 
         StartCoroutine(ApplyRecoil()); // Start recoil as a coroutine
         cooldownTimer = attackCooldown;
@@ -151,9 +151,6 @@ public class ShotgunAttack : MonoBehaviour
     float recoilMultiplier = playerMovement.isGrounded ? 1f : 1.5f;
     Vector2 finalRecoil = customRecoil * recoilForce * recoilMultiplier;
 
-    // Debugging: Check recoil force
-    Debug.Log("Final Recoil: " + finalRecoil);
-
     // Apply the force as an impulse
     rb.AddForce(finalRecoil, ForceMode2D.Impulse);  // Use Impulse for sudden recoil
 
@@ -188,9 +185,10 @@ public class ShotgunAttack : MonoBehaviour
         // Convert angle to radians and calculate direction
         float rad = finalAngle * Mathf.Deg2Rad;
         Vector2 shootDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
-
-        // Instantiate the bullet with the rotation of the firePoint
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log($"Bullet {i} Direction: {shootDir}"); // 👈 Log direction
+        
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().SetDirection(shootDir);
 
         // Set the bullet's direction for movement logic in Bullet script
         Bullet bulletScript = bullet.GetComponent<Bullet>();
