@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 5
-  RageBarValue: 12
+  RageBarValue: 12.5
 --- !u!114 &1856735718475218078
 MonoBehaviour:
   m_ObjectHideFlags: 0

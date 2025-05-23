@@ -73,7 +73,7 @@ public class RageBar : MonoBehaviour
     }
 
     // Method to add rage points to the bar
-    public void AddRage(int amount)
+    public void AddRage(float amount)
     {
         currentRage += amount;
         if (currentRage > maxRage)  // Cap the rage bar at the max value

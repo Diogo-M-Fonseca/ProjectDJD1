@@ -3,34 +3,52 @@ using UnityEngine.UI;  // For accessing UI components like Slider
 
 public class RageBarDisplay : MonoBehaviour
 {
-    public Slider rageSlider;  // Reference to the Slider component
-    public RageBar rageBar;    // Reference to the RageBar script
+    [SerializeField]
+    private Image rageSlider;
+    [SerializeField]
+    private Sprite[] sprites;
+    [SerializeField]
+    private RageBar rageBar;    // Reference to the RageBar script
 
-    void Start()
+    private void Update()
     {
-        if (rageSlider == null)
+        if (rageBar.currentRage <= 0)
         {
-            Debug.LogError("RageBarUI: RageSlider is not assigned!");
+            rageSlider.sprite = sprites[0];
+        }
+        else if (rageBar.currentRage == 12.5)
+        {
+            rageSlider.sprite = sprites[1];
+        }
+        else if (rageBar.currentRage == 25)
+        {
+            rageSlider.sprite = sprites[2];
+        }
+        else if (rageBar.currentRage == 37.5)
+        {
+            rageSlider.sprite = sprites[3];
+        }
+        else if (rageBar.currentRage == 50)
+        {
+            rageSlider.sprite = sprites[4];
+        }
+        else if (rageBar.currentRage == 62.5)
+        {
+            rageSlider.sprite = sprites[5];
+        }
+        else if (rageBar.currentRage == 75)
+        {
+            rageSlider.sprite = sprites[6];
+        }
+        else if (rageBar.currentRage <= 87.5)
+        {
+            rageSlider.sprite = sprites[7];
+        }
+        else if (rageBar.currentRage == 100)
+        {
+            rageSlider.sprite = sprites[8];
         }
 
-        if (rageBar == null)
-        {
-            Debug.LogError("RageBarUI: RageBar script is not assigned!");
-        }
 
-        // Initialize the Slider's max value based on the RageBar's max rage
-        if (rageBar != null && rageSlider != null)
-        {
-            rageSlider.maxValue = rageBar.maxRage;
-        }
-    }
-
-    void Update()
-    {
-        // Update the Slider value based on the current rage
-        if (rageBar != null && rageSlider != null)
-        {
-            rageSlider.value = rageBar.currentRage;
-        }
     }
 }

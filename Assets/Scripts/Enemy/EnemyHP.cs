@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public int scoreValue = 1; // How much this enemy is worth
-    public int RageBarValue = 5; // How much the enemy adds to the RageBar when killed
+    public float RageBarValue; // How much the enemy adds to the RageBar when killed
 
     private Scoreboard scoreboard;
     private RageBar rageBar;  // Separate RageBar script for the rage points
