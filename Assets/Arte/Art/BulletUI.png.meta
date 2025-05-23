@@ -510,7 +510,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BulletUI_0: 8566494701214582340
+      BulletUI_1: 3945721480632972812
+      BulletUI_10: 458816766323785113
+      BulletUI_11: -5700934039280084433
+      BulletUI_12: -7168702930245559978
+      BulletUI_13: 6789254813381258031
+      BulletUI_14: -2786794844738228892
+      BulletUI_2: 7432568190788972859
+      BulletUI_3: 7740710398507519353
+      BulletUI_4: 1643996207040260820
+      BulletUI_5: 4739400847432265248
+      BulletUI_6: 2254390893566686978
+      BulletUI_7: -8420443025756988488
+      BulletUI_8: 312761445929751988
+      BulletUI_9: -875425974007545109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

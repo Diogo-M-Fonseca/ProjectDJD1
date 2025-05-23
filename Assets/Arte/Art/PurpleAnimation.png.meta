@@ -1460,7 +1460,60 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PurpleAnimation_0: -3642065129110805720
+      PurpleAnimation_1: -3708706048054979848
+      PurpleAnimation_10: 7474461146280810667
+      PurpleAnimation_11: -8018610231056247608
+      PurpleAnimation_12: 4977080359116542127
+      PurpleAnimation_13: -2994412609028784444
+      PurpleAnimation_14: -2692235542143133788
+      PurpleAnimation_15: 4995126179688715284
+      PurpleAnimation_16: -4636390348596719478
+      PurpleAnimation_17: 8297006536728509895
+      PurpleAnimation_18: -5300274787168848626
+      PurpleAnimation_19: -5940155721861709509
+      PurpleAnimation_2: -6613344658098032828
+      PurpleAnimation_20: -5157258527655700403
+      PurpleAnimation_21: -6010342684938649900
+      PurpleAnimation_22: 5144437900951645151
+      PurpleAnimation_23: -4704608451739015412
+      PurpleAnimation_24: 8621245873259533688
+      PurpleAnimation_25: -4667438536182933265
+      PurpleAnimation_26: 4298573762699922688
+      PurpleAnimation_27: 8220768216031274423
+      PurpleAnimation_28: -7003966683940307600
+      PurpleAnimation_29: -484578804542956757
+      PurpleAnimation_3: 8518622719851250932
+      PurpleAnimation_30: 6493342790966362862
+      PurpleAnimation_31: -1609275791806244971
+      PurpleAnimation_32: -3832798098889454821
+      PurpleAnimation_33: 4127927256549712074
+      PurpleAnimation_34: 8779664836496836493
+      PurpleAnimation_35: 6414799689930349636
+      PurpleAnimation_36: 8630946610250821512
+      PurpleAnimation_37: -1463526631127401888
+      PurpleAnimation_38: -5952474833978354710
+      PurpleAnimation_39: -1800162358035334030
+      PurpleAnimation_4: -4150535894734257660
+      PurpleAnimation_40: 5538549385944700864
+      PurpleAnimation_41: -8730829812469589943
+      PurpleAnimation_42: 5921910486683913131
+      PurpleAnimation_43: 6226511175370396625
+      PurpleAnimation_44: 2366534711353021060
+      PurpleAnimation_45: -5584082366848908938
+      PurpleAnimation_46: 740065336115635293
+      PurpleAnimation_47: -8873779832837656730
+      PurpleAnimation_48: -4899510971752340263
+      PurpleAnimation_49: 7787163688538410059
+      PurpleAnimation_5: -143211334102230222
+      PurpleAnimation_50: -5743175251174956494
+      PurpleAnimation_51: 5703285893253852544
+      PurpleAnimation_52: 657722976283783154
+      PurpleAnimation_6: 2905106440572899880
+      PurpleAnimation_7: 2021270621351723696
+      PurpleAnimation_8: -7455232896230252895
+      PurpleAnimation_9: -3541029155055297100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
