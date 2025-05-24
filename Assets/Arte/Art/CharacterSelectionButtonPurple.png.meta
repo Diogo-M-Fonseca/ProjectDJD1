@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 631f84222327e314ea43c367de774fcf
+guid: 006d3cd90ac056c4eb29e740fb142bee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3127000282985920423
-    second: CharacterSelectionButton_0
+      213: 6513964611433843531
+    second: CharacterSelectionButtonPurple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CharacterSelectionButton_0
+      name: CharacterSelectionButtonPurple_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a7fbe79036556b20800000000000000
-      internalID: 3127000282985920423
+      spriteID: b4bcaf73d40466a50800000000000000
+      internalID: 6513964611433843531
       vertices: []
       indices: 
       edges: []
