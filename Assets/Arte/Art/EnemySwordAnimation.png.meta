@@ -610,7 +610,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EnemySwordAnimation_0: 4614386366851476695
+      EnemySwordAnimation_1: -3844029845896597148
+      EnemySwordAnimation_10: -7920790668123089326
+      EnemySwordAnimation_11: -8340243370241344455
+      EnemySwordAnimation_12: -2704673037551198274
+      EnemySwordAnimation_13: -1639114190572959595
+      EnemySwordAnimation_14: -4559160794661297445
+      EnemySwordAnimation_15: 1757306850366888440
+      EnemySwordAnimation_16: -2865849735204149715
+      EnemySwordAnimation_17: 4763431283374697274
+      EnemySwordAnimation_18: -920028848396618358
+      EnemySwordAnimation_2: 4949867164764017793
+      EnemySwordAnimation_3: -2621037576886161082
+      EnemySwordAnimation_4: 6859214863569311365
+      EnemySwordAnimation_5: -2878539286744382069
+      EnemySwordAnimation_6: -1888885564241813076
+      EnemySwordAnimation_7: 2970399228106255430
+      EnemySwordAnimation_8: -491979534152789013
+      EnemySwordAnimation_9: 1561250494174320963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

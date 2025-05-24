@@ -1,7 +1,15 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPlayer
 {
+    public float Speed => speed;
+    public float JumpForce => jumpForce;
+    public float MaxJumpTime => maxJumpTime;
+    public float JumpTime
+    {
+        get => jumpTime;
+        set => jumpTime = value;
+    }
     public float speed = 5f;
     public float jumpForce = 10f;
     public float maxJumpTime = 0.5f;
