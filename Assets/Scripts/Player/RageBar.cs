@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RageBar : MonoBehaviour
 {
-    public float currentRage = 50f;  // Starting value for testing
+    public float currentRage;  // Starting value for testing
     public int maxRage = 100;  // Maximum rage value
     public float depletionTime = 10f;  // How long (in seconds) it should take to deplete the rage bar fully
     public float speedBoostAmount = 1.5f;  // How much faster the player gets (1 = no boost, 1.5 = 50% faster)

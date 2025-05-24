@@ -184,6 +184,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -772,7 +785,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GreenAnimations_0: 6405046898874016418
+      GreenAnimations_1: 5725284738492234825
+      GreenAnimations_10: -3603727442305209292
+      GreenAnimations_11: 7165404838771869348
+      GreenAnimations_12: -5364110134583691848
+      GreenAnimations_13: -991958397036958834
+      GreenAnimations_14: 6128416471810673027
+      GreenAnimations_15: -7381215126899420120
+      GreenAnimations_16: 8219811265811217184
+      GreenAnimations_17: 9157000161422002445
+      GreenAnimations_18: -635191020140315360
+      GreenAnimations_19: -3000956887442105965
+      GreenAnimations_2: -5154912715861040837
+      GreenAnimations_20: -2139571279118218013
+      GreenAnimations_21: -4572623904001850588
+      GreenAnimations_22: -8158601388160664122
+      GreenAnimations_23: -5074088081779881837
+      GreenAnimations_24: -5857334009767020094
+      GreenAnimations_25: 9005748295871725494
+      GreenAnimations_3: 8889409042757348962
+      GreenAnimations_4: -8443219662343576971
+      GreenAnimations_5: -8256042296583227140
+      GreenAnimations_6: 2065472239398656082
+      GreenAnimations_7: 589958887740756742
+      GreenAnimations_8: 6776329278410934053
+      GreenAnimations_9: 9100759735104393660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
