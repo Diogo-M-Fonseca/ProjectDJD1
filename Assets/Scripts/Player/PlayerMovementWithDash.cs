@@ -12,10 +12,13 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         get => jumpTime;
         set => jumpTime = value;
     }
+
     public float speed = 5f;
     public float jumpForce = 10f;
     public float maxJumpTime = 0.5f;
     public float jumpTime = 0;
+    public AudioClip dashSound;          // Reference to the dash sound clip
+    private AudioSource dashAudioSource;  // AudioSource for the dash sound
     private Rigidbody2D rigidbody;
     private bool isGrounded;
     public Transform GroundCheck; // The GroundCheck GameObject reference
@@ -24,6 +27,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
     private Quaternion initialRotation; // To store the player's initial rotation
     internal bool canDash = true; // Variable to manage dash cooldown
     private bool isDashing = false;
+    
     [SerializeField]
     private float dashingPower = 24f; // The force of the dash
     [SerializeField]
@@ -31,11 +35,19 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
     [SerializeField]
     private float dashingCooldown = 1f; // The cooldown time for dashing
 
-
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         initialRotation = transform.rotation; // Store the initial rotation
+
+        // Dynamically find the AudioSource on the same GameObject
+        dashAudioSource = GetComponent<AudioSource>();
+
+        // If no AudioSource is found, log a warning
+        if (dashAudioSource == null)
+        {
+            Debug.LogWarning("No AudioSource component found on this GameObject. Dash sound will not play.");
+        }
     }
 
     void Update()
@@ -79,35 +91,41 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
 
     private IEnumerator Dash()
     {
-    // Prevent dashing while already dashing or on cooldown
-    canDash = false;
-    isDashing = true;
+        // Prevent dashing while already dashing or on cooldown
+        canDash = false;
+        isDashing = true;
 
-    // Save the player's gravity scale and set it to 0 to ignore gravity during dash
-    float originalGravity = rigidbody.gravityScale;
-    rigidbody.gravityScale = 0f;
+        // Play the dash sound when dash happens
+        if (dashAudioSource != null && dashSound != null)
+        {
+            dashAudioSource.PlayOneShot(dashSound);  // Play the dash sound
+        }
 
-    // Get the world position of the mouse cursor
-    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Save the player's gravity scale and set it to 0 to ignore gravity during dash
+        float originalGravity = rigidbody.gravityScale;
+        rigidbody.gravityScale = 0f;
 
-    // Calculate the direction from the player to the mouse position
-    Vector2 dashDirection = (mousePosition - (Vector2)transform.position).normalized;
+        // Get the world position of the mouse cursor
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-    // Apply dash velocity in the direction of the mouse
-    rigidbody.linearVelocity = dashDirection * dashingPower;
+        // Calculate the direction from the player to the mouse position
+        Vector2 dashDirection = (mousePosition - (Vector2)transform.position).normalized;
 
-    // Wait for the duration of the dash
-    yield return new WaitForSeconds(dashingTime);
+        // Apply dash velocity in the direction of the mouse
+        rigidbody.linearVelocity = dashDirection * dashingPower;
 
-    // Restore gravity after dash
-    rigidbody.gravityScale = originalGravity;
+        // Wait for the duration of the dash
+        yield return new WaitForSeconds(dashingTime);
 
-    // Stop the dash by setting velocity to zero
-    rigidbody.linearVelocity = Vector2.zero;
-    isDashing = false;
+        // Restore gravity after dash
+        rigidbody.gravityScale = originalGravity;
 
-    // Wait for cooldown time before allowing another dash
-    yield return new WaitForSeconds(dashingCooldown);
-    canDash = true;
+        // Stop the dash by setting velocity to zero
+        rigidbody.linearVelocity = Vector2.zero;
+        isDashing = false;
+
+        // Wait for cooldown time before allowing another dash
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
