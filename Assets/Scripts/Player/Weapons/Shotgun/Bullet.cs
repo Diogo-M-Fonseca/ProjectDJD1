@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         direction = direction.normalized;
         rb.linearVelocity = direction * speed;
-        Debug.Log($"Applied Velocity: {rb.linearVelocity}"); // 👈 Verify velocity is correct
+        Debug.Log($"Applied Velocity: {rb.linearVelocity}"); // Verify velocity is correct
     }
 
     private void Start()

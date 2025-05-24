@@ -1,45 +1,61 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BulletScript : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;  // Bullet speed
-    private Vector3 direction;
+
+    private Vector2 direction;
+    private Rigidbody2D rb;
+
     [SerializeField]
     private float lifetime = 3f;  // Bullet lifetime in seconds
 
-    // Initialize the bullet with a direction
-    public void Initialize(Vector3 dir)
+    private void Awake()
     {
-        direction = dir.normalized; // Normalize direction for consistent movement speed
-        Debug.Log("Bullet initialized with direction: " + direction); // Debug log to confirm direction
-
-        // Destroy the bullet after its lifetime expires
-        Destroy(gameObject, lifetime);  // Destroy this bullet after 'lifetime' seconds
+        rb = GetComponent<Rigidbody2D>();
+        rb.sleepMode = RigidbodySleepMode2D.NeverSleep; // Optional: keep awake for smooth movement
+        rb.gravityScale = 0f; // Usually bullets should not be affected by gravity
     }
 
-    void Update()
+    // Initialize the bullet with a direction vector
+    public void Initialize(Vector2 dir)
     {
-        if (direction != Vector3.zero)
-        {
-            transform.Translate(direction * speed * Time.deltaTime);
-            Debug.Log("Bullet moving: " + transform.position); // Debug log to confirm movement
-        }
+        direction = dir.normalized;
+
+        // Set rotation so the bullet faces movement direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // Apply velocity to Rigidbody2D
+        rb.linearVelocity = direction * speed;
+
+        // Destroy bullet after lifetime seconds
+        Destroy(gameObject, lifetime);
     }
 
+    // Optional: You can add OnTriggerEnter2D here for collision detection
     private void OnTriggerEnter2D(Collider2D other)
+{
+    // Check if the collided object implements IPlayer interface
+    IPlayer player = other.GetComponent<IPlayer>();
+    if (player != null)
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player hit!");
-            // You can apply damage or any other logic here
-            ReloadScene();
-        }
+
+        ReloadScene();
     }
 
-    public void ReloadScene()
+    if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
     {
-        UnityEngine.SceneManagement.Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        Destroy(gameObject); // Destroy bullet on ground hit
+    }
+}
+
+
+    private void ReloadScene()
+    {
+        var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
     }
 }

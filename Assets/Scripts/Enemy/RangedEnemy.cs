@@ -88,12 +88,10 @@ public class RangedEnemy : MonoBehaviour
         {
             targetPlayerScript = player;
             targetPlayer = behaviour.gameObject;
-            Debug.Log("Found player via IPlayer interface.");
             return;
         }
     }
 
-    Debug.LogWarning("No object implementing IPlayer found.");
     }
 
 
@@ -119,7 +117,7 @@ public class RangedEnemy : MonoBehaviour
         if (bulletPrefab == null || firePoint == null || targetPlayer == null) return;
 
         Vector3 targetPosition = targetPlayer.transform.position;
-        targetPosition.y += 1f; // Adjust target height if needed
+        targetPosition.y += 30f; // Adjust target height if needed
 
         Vector3 direction = targetPosition - firePoint.position;
         direction.z = 0;
@@ -127,8 +125,6 @@ public class RangedEnemy : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.GetComponent<BulletScript>().Initialize(direction);
-
-        Debug.Log("Ranged enemy shot a bullet!");
     }
 
     private void FlipEnemySpriteTowardPlayer()
@@ -152,7 +148,6 @@ public class RangedEnemy : MonoBehaviour
         {
             isBlocked = true;
             StopChasing();
-            Debug.Log("Wall detected. Stopping chase.");
         }
     }
 
@@ -161,7 +156,6 @@ public class RangedEnemy : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isBlocked = false;
-            Debug.Log("Wall no longer blocking.");
         }
     }
 }
