@@ -9,75 +9,93 @@ public class RangedEnemy : MonoBehaviour
     public GameObject bulletPrefab;     // Bullet prefab for shooting
     public Transform firePoint;         // Fire point for bullets
 
-    private GameObject[] players;       // All players in scene
-    private GameObject targetPlayer;    // Closest player
-    private bool isChasing = false;     // Are we currently chasing?
+    private GameObject targetPlayer;        // Reference to the player GameObject
+    private IPlayer targetPlayerScript;     // Reference to the IPlayer interface
+    private bool isChasing = false;         // Are we currently chasing?
 
-    private float shootCooldown = 0f;   // Cooldown for shooting
-    public float shootRate = 1f;        // Rate of fire (bullets per second)
+    private float shootCooldown = 0f;       // Cooldown for shooting
+    public float shootRate = 1f;            // Rate of fire (bullets per second)
 
-    private bool isBlocked = false;     // Is the enemy blocked by a wall?
-    
+    private bool isBlocked = false;         // Is the enemy blocked by a wall?
+
     [SerializeField]
-    private Collider2D wallChecker;     // Wall checker collider (set this in the Inspector)
+    private Collider2D wallChecker;         // Wall checker collider (set this in the Inspector)
 
-    private float shootDelayTimer = 0f; // Timer to track the delay before shooting
+    private float shootDelayTimer = 0f;     // Timer to track the delay before shooting
 
     private void Start()
     {
-        players = FindPlayers();
-        ChooseTargetPlayer();
+        FindPlayerByInterface();
     }
 
     private void Update()
     {
-        if (targetPlayer == null) return;
+        if (targetPlayer == null)
+        {
+            FindPlayerByInterface(); // Try to re-find player if null
+            return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.transform.position);
 
         // Prioritize shooting if in range
         if (distanceToPlayer <= shootRange)
         {
-            // Increase the timer by the time passed since the last frame
             shootDelayTimer += Time.deltaTime;
 
-            // Check if the 1 second delay has passed and the cooldown is finished
             if (shootDelayTimer >= 1f && shootCooldown <= 0f)
             {
                 ShootAtPlayer();
-                shootCooldown = shootRate;  // Reset cooldown based on shootRate
-                shootDelayTimer = 0f;  // Reset the delay timer after shooting
+                shootCooldown = shootRate;
+                shootDelayTimer = 0f;
             }
             else
             {
-                // If the delay hasn't passed yet, decrease the cooldown as usual
-                shootCooldown -= Time.deltaTime;  
+                shootCooldown -= Time.deltaTime;
             }
 
-            return; // Don't chase or attack while shooting
+            return;
         }
 
-        // Stop chasing if player is too far or if blocked by a wall
-        if (distanceToPlayer > stopRange && isChasing || isBlocked)
+        // Stop chasing if player is too far or blocked
+        if ((distanceToPlayer > stopRange && isChasing) || isBlocked)
         {
             StopChasing();
         }
 
-        // Start chasing if player is close enough and not blocked by wall
+        // Start chasing if player is within detection range
         if (distanceToPlayer <= detectionRange && !isChasing && !isBlocked)
         {
             StartChasing();
         }
 
-        // Chase if we're in chase mode and not blocked by wall
+        // Chase if in chase mode and not blocked
         if (isChasing && !isBlocked)
         {
             ChasePlayer();
         }
 
-        // Flip the enemy sprite to face the player (no rotation)
+        // Flip sprite to face player
         FlipEnemySpriteTowardPlayer();
     }
+
+    private void FindPlayerByInterface()
+    {
+    MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
+    foreach (var behaviour in allBehaviours)
+    {
+        if (behaviour is IPlayer player)
+        {
+            targetPlayerScript = player;
+            targetPlayer = behaviour.gameObject;
+            Debug.Log("Found player via IPlayer interface.");
+            return;
+        }
+    }
+
+    Debug.LogWarning("No object implementing IPlayer found.");
+    }
+
 
     void StartChasing()
     {
@@ -92,57 +110,22 @@ public class RangedEnemy : MonoBehaviour
     void ChasePlayer()
     {
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
-        direction.y = 0; // Optional: remove vertical movement
+        direction.y = 0; // Optional: prevent vertical movement
         transform.position += direction * speed * Time.deltaTime;
-    }
-
-    GameObject[] FindPlayers()
-    {
-        return GameObject.FindGameObjectsWithTag("Player");
-    }
-
-    void ChooseTargetPlayer()
-    {
-        if (players.Length == 0)
-        {
-            return;
-        }
-
-        float closestDistance = Mathf.Infinity;
-        GameObject closestPlayer = null;
-
-        foreach (var p in players)
-        {
-            float dist = Vector3.Distance(transform.position, p.transform.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                closestPlayer = p;
-            }
-        }
-
-        targetPlayer = closestPlayer;
     }
 
     void ShootAtPlayer()
     {
         if (bulletPrefab == null || firePoint == null || targetPlayer == null) return;
 
-        // Adjust the player's target height (raise it by 1 unit on the Y-axis)
         Vector3 targetPosition = targetPlayer.transform.position;
-        targetPosition.y += 35f;  // Optional: raise target to eye level or adjust as necessary
+        targetPosition.y += 1f; // Adjust target height if needed
 
-        // Calculate the direction from the fire point to the adjusted target position
         Vector3 direction = targetPosition - firePoint.position;
-        direction.z = 0;  // Ensure the bullet moves on the X-Y plane
-
-        // Normalize the direction vector to get a consistent speed
+        direction.z = 0;
         direction.Normalize();
 
-        // Instantiate the bullet at the fire point and set its direction
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-
-        // Set the bullet's direction through BulletScript (or your custom bullet logic)
         bullet.GetComponent<BulletScript>().Initialize(direction);
 
         Debug.Log("Ranged enemy shot a bullet!");
@@ -163,13 +146,12 @@ public class RangedEnemy : MonoBehaviour
         }
     }
 
-    // Check if the wall checker hits an obstacle (wall or ground)
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isBlocked = true;
-            StopChasing(); // Stop chasing if blocked
+            StopChasing();
             Debug.Log("Wall detected. Stopping chase.");
         }
     }
