@@ -75,13 +75,11 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jump = true;
-            animator.SetBool("Jump", jump);
         }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             jump = false;
-            animator.SetBool("Jump", jump);
         }
     }
 
