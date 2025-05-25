@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class ShotgunAttack : MonoBehaviour
 {
@@ -31,31 +31,38 @@ public class ShotgunAttack : MonoBehaviour
     public PlayerMovement playerMovement;
     public BulletUI bulletDisplay;  // This is the public field where you assign the BulletDisplay script
 
+    // Add an AudioSource component and AudioClip for shooting sound
+    public AudioSource audioSource;  // Reference to the AudioSource component
+    public AudioClip shootSound;     // Reference to the shooting sound clip
 
     void Start()
-{
-    attackArea = transform.GetChild(0).gameObject;
-    rb = GetComponent<Rigidbody2D>();
-
-    // Automatically find the BulletDisplay script in the scene
-    if (bulletDisplay == null)
     {
-        bulletDisplay = FindFirstObjectByType<BulletUI>();
+        attackArea = transform.GetChild(0).gameObject;
+        rb = GetComponent<Rigidbody2D>();
+
+        // Automatically find the BulletDisplay script in the scene
+        if (bulletDisplay == null)
+        {
+            bulletDisplay = FindFirstObjectByType<BulletUI>();
+        }
+
+        // Check if the BulletDisplay script was found
+        if (bulletDisplay == null)
+        {
+            Debug.LogError("BulletDisplay script not found in the scene!");
+        }
+
+        // Ensure AudioSource is assigned
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
-
-    // Check if the BulletDisplay script was found
-    if (bulletDisplay == null)
-    {
-        Debug.LogError("BulletDisplay script not found in the scene!");
-    }
-
-    // Update bullet count UI initially
-}
-
 
     void Update()
     {
         animator.SetInteger("Bullets", bullets);
+
         // Update cooldown timer
         if (cooldownTimer > 0)
         {
@@ -67,7 +74,7 @@ public class ShotgunAttack : MonoBehaviour
         {
             animator.SetBool("IsReloading", true);
             reloadTime -= Time.deltaTime;
-            
+
             if (reloadTime <= 0)
             {
                 Reload();
@@ -75,7 +82,7 @@ public class ShotgunAttack : MonoBehaviour
             }
         }
 
-        // Rotate the attack area towards the mouse position
+        // Rotate the attack area towards the mouse
         RotateAttackAreaTowardsMouse();
 
         // When left-click is pressed and cooldown finished
@@ -93,7 +100,6 @@ public class ShotgunAttack : MonoBehaviour
             {
                 attackTimer = 0f;
                 attacking = false;
-                attackArea.SetActive(false);
             }
         }
     }
@@ -109,95 +115,108 @@ public class ShotgunAttack : MonoBehaviour
 
     private void Attack()
     {
-    if (bullets > 0)
+        if (bullets > 0)
+        {
+            attacking = true;
+            bullets -= 1;
+            if (bullets < 0) bullets = 0;
+
+            ShootConeBullets(); // Fire 3 bullets in a cone
+
+            StartCoroutine(ApplyRecoil()); // Start recoil as a coroutine
+            cooldownTimer = attackCooldown;
+
+            // Play the shooting sound
+            PlayShootSound();
+        }
+
+        if (bullets == 0)
+        {
+            reloading = true;
+            reloadTime = 1f;
+        }
+    }
+
+    // This function plays the shooting sound
+    private void PlayShootSound()
     {
-        attacking = true;
-        attackArea.SetActive(true);
-        bullets -= 1;
-        if (bullets < 0) bullets = 0;
-
-        ShootConeBullets(); // Fire 3 bullets in a cone
-
-        StartCoroutine(ApplyRecoil()); // Start recoil as a coroutine
-        cooldownTimer = attackCooldown;
+        if (audioSource != null && shootSound != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or ShootSound not assigned!");
+        }
     }
-
-    if (bullets == 0)
-    {
-        reloading = true;
-        reloadTime = 1f;
-    }
-    }
-
 
     private IEnumerator ApplyRecoil()
     {
-    // Get the world position of the mouse cursor
-    Vector3 mouseScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane);
-    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        // Get the world position of the mouse cursor
+        Vector3 mouseScreenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
 
-    // Calculate direction from player to mouse
-    Vector2 direction = (mousePosition - transform.position).normalized;
+        // Calculate direction from player to mouse
+        Vector2 direction = (mousePosition - transform.position).normalized;
 
-    // Invert direction for recoil (this is the main recoil direction)
-    Vector2 recoilDirection = -direction;
+        // Invert direction for recoil (this is the main recoil direction)
+        Vector2 recoilDirection = -direction;
 
-    // Apply different multipliers to X and Y without normalizing
-    Vector2 customRecoil = new Vector2(
-        recoilDirection.x * recoilXMultiplier,
-        recoilDirection.y * recoilYMultiplier
-    );
+        // Apply different multipliers to X and Y without normalizing
+        Vector2 customRecoil = new Vector2(
+            recoilDirection.x * recoilXMultiplier,
+            recoilDirection.y * recoilYMultiplier
+        );
 
-    // Final recoil vector, scaled by recoil force and grounded state
-    float recoilMultiplier = playerMovement.isGrounded ? 1f : 1.5f;
-    Vector2 finalRecoil = customRecoil * recoilForce * recoilMultiplier;
+        // Final recoil vector, scaled by recoil force and grounded state
+        float recoilMultiplier = playerMovement.isGrounded ? 1f : 1.5f;
+        Vector2 finalRecoil = customRecoil * recoilForce * recoilMultiplier;
 
-    // Apply the force as an impulse
-    rb.AddForce(finalRecoil, ForceMode2D.Impulse);  // Use Impulse for sudden recoil
+        // Apply the force as an impulse
+        rb.AddForce(finalRecoil, ForceMode2D.Impulse);  // Use Impulse for sudden recoil
 
-    // Lock player movement briefly after recoil (optional)
-    playerMovement.LockMovementTemporarily();
+        // Lock player movement briefly after recoil (optional)
+        playerMovement.LockMovementTemporarily();
 
-    // Optional delay for recoil effect
-    yield return new WaitForSeconds(0.1f);  // Allow some time for recoil to take effect
+        // Optional delay for recoil effect
+        yield return new WaitForSeconds(0.1f);  // Allow some time for recoil to take effect
     }
 
     private void Reload()
     {
         bullets = maxBullets;
         reloading = false;
-        
     }
+
     private void ShootConeBullets()
     {
-    int bulletCount = 3;
-    float spreadAngle = 30f;
-    float startAngle = -spreadAngle / 2f;
-    float angleStep = spreadAngle / (bulletCount - 1);
+        int bulletCount = 3;
+        float spreadAngle = 30f;
+        float startAngle = -spreadAngle / 2f;
+        float angleStep = spreadAngle / (bulletCount - 1);
 
-    // Get base aim angle from firePoint (this ensures the bullet follows firePoint's rotation)
-    float baseAngle = firePoint.transform.eulerAngles.z;
+        // Get base aim angle from firePoint (this ensures the bullet follows firePoint's rotation)
+        float baseAngle = firePoint.transform.eulerAngles.z;
 
-    for (int i = 0; i < bulletCount; i++)
-    {
-        float angleOffset = startAngle + i * angleStep;
-        float finalAngle = baseAngle + angleOffset;
-
-        // Convert angle to radians and calculate direction
-        float rad = finalAngle * Mathf.Deg2Rad;
-        Vector2 shootDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
-        Debug.Log($"Bullet {i} Direction: {shootDir}"); // 👈 Log direction
-        
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetDirection(shootDir);
-
-        // Set the bullet's direction for movement logic in Bullet script
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        if (bulletScript != null)
+        for (int i = 0; i < bulletCount; i++)
         {
-            bulletScript.SetDirection(shootDir);
+            float angleOffset = startAngle + i * angleStep;
+            float finalAngle = baseAngle + angleOffset;
+
+            // Convert angle to radians and calculate direction
+            float rad = finalAngle * Mathf.Deg2Rad;
+            Vector2 shootDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+            Debug.Log($"Bullet {i} Direction: {shootDir}"); // 👈 Log direction
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().SetDirection(shootDir);
+
+            // Set the bullet's direction for movement logic in Bullet script
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDirection(shootDir);
+            }
         }
     }
-    }
-
 }
