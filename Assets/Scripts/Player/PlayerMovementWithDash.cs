@@ -19,7 +19,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
     public float jumpTime = 0;
     public AudioClip dashSound;          // Reference to the dash sound clip
     private AudioSource dashAudioSource;  // AudioSource for the dash sound
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private bool isGrounded;
     public Transform GroundCheck; // The GroundCheck GameObject reference
     public float groundCheckRadius = 0.2f; // The radius of the GroundCheck circle (adjust as needed)
@@ -37,7 +37,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         initialRotation = transform.rotation; // Store the initial rotation
 
         // Dynamically find the AudioSource on the same GameObject
@@ -59,7 +59,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         float moveX = Input.GetAxis("Horizontal");
         if (!isDashing) // Only apply movement when not dashing
         {
-            rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y); // Apply movement
+            rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y); // Apply movement
         }
 
         // Flip logic using transform.right to check the direction
@@ -75,11 +75,11 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Movement_Jump (Upward)
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce); // Jump force applied only on the Y-axis
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // Jump force applied only on the Y-axis
         }
-        if (Input.GetButtonUp("Jump") && rigidbody.linearVelocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0); // Stop upward movement when jump button is released
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Stop upward movement when jump button is released
         }
 
         // Trigger the dash when right mouse button (or another input) is pressed
@@ -102,8 +102,8 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         }
 
         // Save the player's gravity scale and set it to 0 to ignore gravity during dash
-        float originalGravity = rigidbody.gravityScale;
-        rigidbody.gravityScale = 0f;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
 
         // Get the world position of the mouse cursor
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -112,16 +112,16 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         Vector2 dashDirection = (mousePosition - (Vector2)transform.position).normalized;
 
         // Apply dash velocity in the direction of the mouse
-        rigidbody.linearVelocity = dashDirection * dashingPower;
+        rb.linearVelocity = dashDirection * dashingPower;
 
         // Wait for the duration of the dash
         yield return new WaitForSeconds(dashingTime);
 
         // Restore gravity after dash
-        rigidbody.gravityScale = originalGravity;
+        rb.gravityScale = originalGravity;
 
         // Stop the dash by setting velocity to zero
-        rigidbody.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         isDashing = false;
 
         // Wait for cooldown time before allowing another dash

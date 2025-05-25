@@ -1,85 +1,91 @@
 fileFormatVersion: 2
-guid: 7689c63ccb581034388f96660f043385
+guid: 48cdf025e9409a24da8ac8e2e4a1cabf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6405046898874016418
-    second: GreenAnimations_0
+      213: -19280932763036239
+    second: GreenAnimation_0
   - first:
-      213: 5725284738492234825
-    second: GreenAnimations_1
+      213: -1875875252624982614
+    second: GreenAnimation_1
   - first:
-      213: -5154912715861040837
-    second: GreenAnimations_2
+      213: 1761347027199203788
+    second: GreenAnimation_2
   - first:
-      213: 8889409042757348962
-    second: GreenAnimations_3
+      213: 2192124572749169909
+    second: GreenAnimation_3
   - first:
-      213: -8443219662343576971
-    second: GreenAnimations_4
+      213: -755447846936126645
+    second: GreenAnimation_4
   - first:
-      213: -8256042296583227140
-    second: GreenAnimations_5
+      213: -2087120329223484888
+    second: GreenAnimation_5
   - first:
-      213: 2065472239398656082
-    second: GreenAnimations_6
+      213: -3400003537843993570
+    second: GreenAnimation_6
   - first:
-      213: 589958887740756742
-    second: GreenAnimations_7
+      213: -8221015770494626044
+    second: GreenAnimation_7
   - first:
-      213: 6776329278410934053
-    second: GreenAnimations_8
+      213: -4736094682809154805
+    second: GreenAnimation_8
   - first:
-      213: 9100759735104393660
-    second: GreenAnimations_9
+      213: 6524442407322361998
+    second: GreenAnimation_9
   - first:
-      213: -3603727442305209292
-    second: GreenAnimations_10
+      213: 3727791074489784681
+    second: GreenAnimation_10
   - first:
-      213: 7165404838771869348
-    second: GreenAnimations_11
+      213: -180396004737358085
+    second: GreenAnimation_11
   - first:
-      213: -5364110134583691848
-    second: GreenAnimations_12
+      213: -1761957498312474319
+    second: GreenAnimation_12
   - first:
-      213: -991958397036958834
-    second: GreenAnimations_13
+      213: -911853674560858195
+    second: GreenAnimation_13
   - first:
-      213: 6128416471810673027
-    second: GreenAnimations_14
+      213: -1123558581098337349
+    second: GreenAnimation_14
   - first:
-      213: -7381215126899420120
-    second: GreenAnimations_15
+      213: -7580518352547812477
+    second: GreenAnimation_15
   - first:
-      213: 8219811265811217184
-    second: GreenAnimations_16
+      213: -2389150584749876564
+    second: GreenAnimation_16
   - first:
-      213: 9157000161422002445
-    second: GreenAnimations_17
+      213: -6241222527532541869
+    second: GreenAnimation_17
   - first:
-      213: -635191020140315360
-    second: GreenAnimations_18
+      213: -1258597565603881863
+    second: GreenAnimation_18
   - first:
-      213: -3000956887442105965
-    second: GreenAnimations_19
+      213: -7110668511156752974
+    second: GreenAnimation_19
   - first:
-      213: -2139571279118218013
-    second: GreenAnimations_20
+      213: 5536838108073913590
+    second: GreenAnimation_20
   - first:
-      213: -4572623904001850588
-    second: GreenAnimations_21
+      213: 5972023967778693345
+    second: GreenAnimation_21
   - first:
-      213: -8158601388160664122
-    second: GreenAnimations_22
+      213: 5347480785894769257
+    second: GreenAnimation_22
   - first:
-      213: -5074088081779881837
-    second: GreenAnimations_23
+      213: 466230912440136330
+    second: GreenAnimation_23
   - first:
-      213: -5857334009767020094
-    second: GreenAnimations_24
+      213: -3933051217197791040
+    second: GreenAnimation_24
   - first:
-      213: 9005748295871725494
-    second: GreenAnimations_25
+      213: -5756326550844188974
+    second: GreenAnimation_25
+  - first:
+      213: -2613811695280532487
+    second: GreenAnimation_26
+  - first:
+      213: -8502350137145126887
+    second: GreenAnimation_27
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -184,24 +190,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenAnimations_0
+      name: GreenAnimation_0
       rect:
         serializedVersion: 2
         x: 11
@@ -216,14 +209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a26a19183c43e850800000000000000
-      internalID: 6405046898874016418
+      spriteID: 1b598b308108bbff0800000000000000
+      internalID: -19280932763036239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_1
+      name: GreenAnimation_1
       rect:
         serializedVersion: 2
         x: 11
@@ -238,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94c7bc3c22c447f40800000000000000
-      internalID: 5725284738492234825
+      spriteID: aad7754856d87f5e0800000000000000
+      internalID: -1875875252624982614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_2
+      name: GreenAnimation_2
       rect:
         serializedVersion: 2
         x: 39
@@ -260,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3165f262321678b0800000000000000
-      internalID: -5154912715861040837
+      spriteID: cc9166a0acf817810800000000000000
+      internalID: 1761347027199203788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_3
+      name: GreenAnimation_3
       rect:
         serializedVersion: 2
         x: 70
@@ -282,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26e62b02d668d5b70800000000000000
-      internalID: 8889409042757348962
+      spriteID: 5f48e1e3fadfb6e10800000000000000
+      internalID: 2192124572749169909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_4
+      name: GreenAnimation_4
       rect:
         serializedVersion: 2
         x: 105
@@ -304,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 572ea618378a3da80800000000000000
-      internalID: -8443219662343576971
+      spriteID: b4bd90d8f2c1485f0800000000000000
+      internalID: -755447846936126645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_5
+      name: GreenAnimation_5
       rect:
         serializedVersion: 2
         x: 136
@@ -326,14 +319,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf87e8d0645ac6d80800000000000000
-      internalID: -8256042296583227140
+      spriteID: 82a432d5e1f0903e0800000000000000
+      internalID: -2087120329223484888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_6
+      name: GreenAnimation_6
       rect:
         serializedVersion: 2
         x: 164
@@ -348,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25899c2fe080aac10800000000000000
-      internalID: 2065472239398656082
+      spriteID: e14ccbbdbc2c0d0d0800000000000000
+      internalID: -3400003537843993570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_7
+      name: GreenAnimation_7
       rect:
         serializedVersion: 2
         x: 43
@@ -370,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6035fdf8b74ff2800800000000000000
-      internalID: 589958887740756742
+      spriteID: 40798caa6b519ed80800000000000000
+      internalID: -8221015770494626044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_8
+      name: GreenAnimation_8
       rect:
         serializedVersion: 2
         x: 43
@@ -392,14 +385,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 52743c0839b5a0e50800000000000000
-      internalID: 6776329278410934053
+      spriteID: b034b889af2064eb0800000000000000
+      internalID: -4736094682809154805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_9
+      name: GreenAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 63
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80a1fd2dc97b8a50800000000000000
+      internalID: 6524442407322361998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenAnimation_10
       rect:
         serializedVersion: 2
         x: 76
@@ -414,14 +429,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb1531dd2c46c4e70800000000000000
-      internalID: 9100759735104393660
+      spriteID: 969d5d74b36cbb330800000000000000
+      internalID: 3727791074489784681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_10
+      name: GreenAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 63
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6eaba1aca1f7df0800000000000000
+      internalID: -180396004737358085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenAnimation_12
       rect:
         serializedVersion: 2
         x: 108
@@ -436,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43c221e0cfcfcfdc0800000000000000
-      internalID: -3603727442305209292
+      spriteID: 131cfb39df44c87e0800000000000000
+      internalID: -1761957498312474319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_11
+      name: GreenAnimation_13
       rect:
         serializedVersion: 2
         x: 140
@@ -458,14 +495,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a6ccd6acb1a07360800000000000000
-      internalID: 7165404838771869348
+      spriteID: da75aa80ae17853f0800000000000000
+      internalID: -911853674560858195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_12
+      name: GreenAnimation_14
       rect:
         serializedVersion: 2
         x: 172
@@ -480,14 +517,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b5f01cb04ade85b0800000000000000
-      internalID: -5364110134583691848
+      spriteID: bbbaa416c615860f0800000000000000
+      internalID: -1123558581098337349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_13
+      name: GreenAnimation_15
       rect:
         serializedVersion: 2
         x: 11
@@ -502,14 +539,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8b65a0f71bdb32f0800000000000000
-      internalID: -991958397036958834
+      spriteID: 38bee0fb8b69cc690800000000000000
+      internalID: -7580518352547812477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_14
+      name: GreenAnimation_16
       rect:
         serializedVersion: 2
         x: 204
@@ -524,14 +561,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3898de5bf428c0550800000000000000
-      internalID: 6128416471810673027
+      spriteID: caa1111933808ded0800000000000000
+      internalID: -2389150584749876564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_15
+      name: GreenAnimation_17
       rect:
         serializedVersion: 2
         x: 235
@@ -546,14 +583,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8249b6e03f7a09990800000000000000
-      internalID: -7381215126899420120
+      spriteID: 358d14abd29b269a0800000000000000
+      internalID: -6241222527532541869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_16
+      name: GreenAnimation_18
       rect:
         serializedVersion: 2
         x: 267
@@ -568,14 +605,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02b7e6bbbc2a21270800000000000000
-      internalID: 8219811265811217184
+      spriteID: 97c5203be20988ee0800000000000000
+      internalID: -1258597565603881863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_17
+      name: GreenAnimation_19
       rect:
         serializedVersion: 2
         x: 11
@@ -590,14 +627,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d09c0c58123341f70800000000000000
-      internalID: 9157000161422002445
+      spriteID: 2bd22fcb9a4d15d90800000000000000
+      internalID: -7110668511156752974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_18
+      name: GreenAnimation_20
       rect:
         serializedVersion: 2
         x: 40
@@ -612,14 +649,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02db400f1295f27f0800000000000000
-      internalID: -635191020140315360
+      spriteID: 6fc67928cecc6dc40800000000000000
+      internalID: 5536838108073913590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_19
+      name: GreenAnimation_21
       rect:
         serializedVersion: 2
         x: 73
@@ -634,14 +671,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39950c15c957a56d0800000000000000
-      internalID: -3000956887442105965
+      spriteID: 1e061955824e0e250800000000000000
+      internalID: 5972023967778693345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_20
+      name: GreenAnimation_22
       rect:
         serializedVersion: 2
         x: 103
@@ -656,14 +693,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ecc780f147be42e0800000000000000
-      internalID: -2139571279118218013
+      spriteID: 9620c7e4171163a40800000000000000
+      internalID: 5347480785894769257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_21
+      name: GreenAnimation_23
       rect:
         serializedVersion: 2
         x: 135
@@ -678,14 +715,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 423828e39c6ca80c0800000000000000
-      internalID: -4572623904001850588
+      spriteID: a82fc4f6b82687600800000000000000
+      internalID: 466230912440136330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_22
+      name: GreenAnimation_24
       rect:
         serializedVersion: 2
         x: 167
@@ -700,14 +737,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cdbcaa7343d6ce80800000000000000
-      internalID: -8158601388160664122
+      spriteID: 0c8028391cefa69c0800000000000000
+      internalID: -3933051217197791040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_23
+      name: GreenAnimation_25
       rect:
         serializedVersion: 2
         x: 194
@@ -722,14 +759,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3988776f5c73599b0800000000000000
-      internalID: -5074088081779881837
+      spriteID: 2d658c5108b6d10b0800000000000000
+      internalID: -5756326550844188974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_24
+      name: GreenAnimation_26
       rect:
         serializedVersion: 2
         x: 226
@@ -744,14 +781,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c9b50960c196bea0800000000000000
-      internalID: -5857334009767020094
+      spriteID: 9f3da099c10e9bbd0800000000000000
+      internalID: -2613811695280532487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenAnimations_25
+      name: GreenAnimation_27
       rect:
         serializedVersion: 2
         x: 258
@@ -766,8 +803,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bf73005c58dafc70800000000000000
-      internalID: 9005748295871725494
+      spriteID: 910987ff895910a80800000000000000
+      internalID: -8502350137145126887
       vertices: []
       indices: 
       edges: []
@@ -785,33 +822,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      GreenAnimations_0: 6405046898874016418
-      GreenAnimations_1: 5725284738492234825
-      GreenAnimations_10: -3603727442305209292
-      GreenAnimations_11: 7165404838771869348
-      GreenAnimations_12: -5364110134583691848
-      GreenAnimations_13: -991958397036958834
-      GreenAnimations_14: 6128416471810673027
-      GreenAnimations_15: -7381215126899420120
-      GreenAnimations_16: 8219811265811217184
-      GreenAnimations_17: 9157000161422002445
-      GreenAnimations_18: -635191020140315360
-      GreenAnimations_19: -3000956887442105965
-      GreenAnimations_2: -5154912715861040837
-      GreenAnimations_20: -2139571279118218013
-      GreenAnimations_21: -4572623904001850588
-      GreenAnimations_22: -8158601388160664122
-      GreenAnimations_23: -5074088081779881837
-      GreenAnimations_24: -5857334009767020094
-      GreenAnimations_25: 9005748295871725494
-      GreenAnimations_3: 8889409042757348962
-      GreenAnimations_4: -8443219662343576971
-      GreenAnimations_5: -8256042296583227140
-      GreenAnimations_6: 2065472239398656082
-      GreenAnimations_7: 589958887740756742
-      GreenAnimations_8: 6776329278410934053
-      GreenAnimations_9: 9100759735104393660
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

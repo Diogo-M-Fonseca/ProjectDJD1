@@ -82,7 +82,7 @@ public class RangedEnemy : MonoBehaviour
     private void FindPlayerByInterface()
     {
     MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
-    foreach (var behaviour in allBehaviours)
+    foreach (MonoBehaviour behaviour in allBehaviours)
     {
         if (behaviour is IPlayer player)
         {

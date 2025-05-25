@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float maxJumpTime = 0.5f;
     public float jumpTime = 0;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     public bool isGrounded;
     public Transform GroundCheck;
     public float groundCheckRadius = 0.2f;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         initialRotation = transform.rotation;
     }
 
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         // Only apply movement if not locked by recoil
         if (recoilLockTimer <= 0)
         {
-            rigidbody.linearVelocity = new Vector2(moveX * speed, rigidbody.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
         }
 
         // Flip logic
@@ -62,11 +62,11 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        if (Input.GetButtonUp("Jump") && rigidbody.linearVelocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
         }
     }
 

@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class RageBar : MonoBehaviour
 {
@@ -13,39 +15,18 @@ public class RageBar : MonoBehaviour
     private float originalSpeed;  // Store the player's original speed
     private float originalSpeedwithDash;
     private float timePassed = 0f;  // Timer to track how much time has passed
-    public bool isInvul = false;
 
     private void Start()
     {
-        // Find the PlayerMovement script on the player GameObject
-        playerMovement = Object.FindFirstObjectByType<PlayerMovement>();
-        playerMovementWithDash = Object.FindFirstObjectByType<PlayerMovementWithDash>();
-
-        if (playerMovement != null)
-        {
-            originalSpeed = playerMovement.speed;  // Store the original speed
-        }
-        else
-        {
-            Debug.LogError("PlayerMovement script not found!");
-        }
-        if (playerMovementWithDash != null)
-        {
-            originalSpeedwithDash = playerMovementWithDash.speed;
-        }
-        else
-        {
-            Debug.LogError("PlayerMovementWithDash script not found!");
-        }
+        FindPlayerComponents();
     }
 
     private void Update()
     {
         // Check if the F key is pressed and start the depletion process
-        if (Input.GetKeyDown(KeyCode.F) && currentRage > 0)
+        if (Input.GetKeyDown(KeyCode.F) && currentRage == maxRage)
         {
             isDepleting = true;  // Start depleting
-            isInvul = true;
 
         }
 
@@ -63,7 +44,6 @@ public class RageBar : MonoBehaviour
             {
                 currentRage = 0;
                 isDepleting = false;  // Stop depleting when the rage bar hits 0
-                isInvul = false;
 
             }
 
@@ -112,5 +92,31 @@ public class RageBar : MonoBehaviour
                 playerMovementWithDash.speed = originalSpeedwithDash;  // Reset speed to original value
             }
         }
+    }
+    private IEnumerator FindPlayerComponents()
+    {
+    // Loop forever until we find at least one component
+    while (true)
+    {
+        playerMovement = FindFirstObjectByType<PlayerMovement>();
+        playerMovementWithDash = FindFirstObjectByType<PlayerMovementWithDash>();
+
+            if (playerMovement != null)
+            {
+                originalSpeed = playerMovement.speed;
+                Debug.Log("found playermovement");
+                yield break; // Exit coroutine
+                
+            }
+            else if (playerMovementWithDash != null)
+            {
+                originalSpeedwithDash = playerMovementWithDash.speed;
+                Debug.Log("found playermovementwdash");
+                yield break; // Exit coroutine
+                
+        }
+        
+        yield return null;
+    }
     }
 }

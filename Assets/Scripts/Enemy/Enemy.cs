@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private GameObject attackArea;        // Reference to hitbox GameObject (this includes the sprite)
     [SerializeField]
     private GameObject highscore;
+    private IPlayer targetPlayerScript; 
 
     private GameObject[] players;        // All players in scene
     private GameObject targetPlayer;     // Closest player
@@ -29,15 +30,14 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        players = FindPlayers();
-        ChooseTargetPlayer();
+        FindPlayerByInterface();
     }
 
     private void Update()
     {
         if (targetPlayer == null)
         {
-            return;
+            FindPlayerByInterface();
         }
 
         float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.transform.position);
@@ -92,33 +92,20 @@ public class Enemy : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    GameObject[] FindPlayers()
+    private void FindPlayerByInterface()
     {
-        return GameObject.FindGameObjectsWithTag("Player");
-    }
-
-    void ChooseTargetPlayer()
-    {
-        if (players.Length == 0)
+        MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
+        foreach (MonoBehaviour behaviour in allBehaviours)
         {
-            return;
-        }
-
-        float closestDistance = Mathf.Infinity;
-        GameObject closestPlayer = null;
-
-        foreach (var p in players)
-        {
-            float dist = Vector3.Distance(transform.position, p.transform.position);
-            if (dist < closestDistance)
+            if (behaviour is IPlayer player)
             {
-                closestDistance = dist;
-                closestPlayer = p;
+                targetPlayerScript = player;
+                targetPlayer = behaviour.gameObject;
+                return;
             }
         }
-
-        targetPlayer = closestPlayer;
     }
+
 
     private IEnumerator AttackPlayer()
     {

@@ -46,9 +46,9 @@ public class EnemyHP : MonoBehaviour
 
             // Destroy this enemy
             Destroy(gameObject);
-            enemySpawner = FindObjectOfType<EnemySpawner>();
+            enemySpawner = FindFirstObjectByType<EnemySpawner>();
             enemySpawner.enemyInRoom--;
-            if (enemySpawner.spawnTime <= 0 && enemySpawner.enemyInRoom <= 0);
+            if (enemySpawner.spawnTime <= 0 && enemySpawner.enemyInRoom <= 0)
             {
                 enemySpawner.spawnerDone = true;
             }
