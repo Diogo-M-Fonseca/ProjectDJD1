@@ -68710,7 +68710,7 @@ PrefabInstance:
     - target: {fileID: 777973502333591029, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 325369449}
+      objectReference: {fileID: 0}
     - target: {fileID: 777973502333591029, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: jumpForce
       value: 450
