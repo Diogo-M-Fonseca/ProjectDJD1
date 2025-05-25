@@ -12,7 +12,10 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         get => jumpTime;
         set => jumpTime = value;
     }
-
+    [SerializeField]
+    private Animator animator;
+    private bool isAlive = true;
+    private bool isRunning = false;
     public float speed = 5f;
     public float jumpForce = 10f;
     public float maxJumpTime = 0.5f;
@@ -54,22 +57,28 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
     {
         // Check if the player is grounded using the GroundCheck collider
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, groundLayer);
-
+        animator.SetBool("OnGround", isGrounded);
         // Movement_X (Left and Right)
         float moveX = Input.GetAxis("Horizontal");
         if (!isDashing) // Only apply movement when not dashing
         {
             rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y); // Apply movement
         }
-
+        animator.SetBool("IsRunning", isRunning);
         // Flip logic using transform.right to check the direction
         if (moveX < 0 && transform.right.x > 0) // If moving left but facing right
         {
             transform.rotation = initialRotation * Quaternion.Euler(0f, 180f, 0f); // Flip character
+            isRunning = true;
         }
         else if (moveX > 0 && transform.right.x < 0) // If moving right but facing left
         {
             transform.rotation = initialRotation * Quaternion.Euler(0f, 0f, 0f); // Reset rotation to original
+            isRunning = true;
+        }
+        else if (moveX == 0)
+        {
+            isRunning = false;
         }
 
         // Movement_Jump (Upward)
@@ -86,6 +95,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         if (Input.GetMouseButtonDown(1) && canDash && !isDashing)
         {
             StartCoroutine(Dash()); // Start the dash coroutine
+
         }
     }
 
@@ -94,6 +104,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Prevent dashing while already dashing or on cooldown
         canDash = false;
         isDashing = true;
+        animator.SetTrigger("IsDashing");
 
         // Play the dash sound when dash happens
         if (dashAudioSource != null && dashSound != null)

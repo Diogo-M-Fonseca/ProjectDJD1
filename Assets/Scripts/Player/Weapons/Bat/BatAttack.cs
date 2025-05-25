@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BatAttack : MonoBehaviour
 {
+    [SerializeField]
+    private Animator animator;
     private GameObject attackArea = default;
     public bool attacking = false;
     public float attackDuration = 0.25f;     // How long the attack area stays active
@@ -47,6 +49,7 @@ public class BatAttack : MonoBehaviour
         attacking = true;
         attackArea.SetActive(true);
         cooldownTimer = attackCooldown;  // Reset cooldown when you attack
+        animator.SetTrigger("Attack");
     }
 
 }

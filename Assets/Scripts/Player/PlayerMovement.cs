@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float JumpForce => jumpForce;
     public float MaxJumpTime => maxJumpTime;
     private bool jump = false;
+    private bool isAlive = true;
     public float JumpTime
     {
         get => jumpTime;
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         }
 
         float moveX = Input.GetAxis("Horizontal");
-        animator.SetFloat("IsRunning", moveX);
+        animator.SetBool("IsRunning", isRunning);
         // Only apply movement if not locked by recoil
         if (recoilLockTimer <= 0)
         {
@@ -57,10 +58,16 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         if (moveX < 0 && transform.right.x > 0)
         {
             transform.rotation = initialRotation * Quaternion.Euler(0f, 180f, 0f);
+            isRunning = true;
         }
         else if (moveX > 0 && transform.right.x < 0)
         {
             transform.rotation = initialRotation * Quaternion.Euler(0f, 0f, 0f);
+            isRunning = true;
+        }
+        else if(moveX == 0)
+        {
+            isRunning = false;
         }
 
         // Jumping

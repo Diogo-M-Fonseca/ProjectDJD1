@@ -18,7 +18,8 @@ public class Enemy : MonoBehaviour
     private GameObject attackArea;        // Reference to hitbox GameObject (this includes the sprite)
     [SerializeField]
     private GameObject highscore;
-    private IPlayer targetPlayerScript; 
+    private IPlayer targetPlayerScript;
+    [SerializeField] private Animator animator;
 
     private GameObject[] players;        // All players in scene
     private GameObject targetPlayer;     // Closest player
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
             if (!isAttacking)
             {
                 StopChasing();
+                animator.SetBool("Moving", false);
                 StartCoroutine(AttackPlayer());
             }
             return; // Stop chasing while attacking
@@ -78,11 +80,13 @@ public class Enemy : MonoBehaviour
     void StartChasing()
     {
         isChasing = true;
+        animator.SetBool("Moving", isChasing);
     }
 
     void StopChasing()
     {
         isChasing = false;
+        animator.SetBool("Moving", isChasing);
     }
 
     void ChasePlayer()
@@ -110,6 +114,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator AttackPlayer()
     {
         isAttacking = true;
+        animator.SetBool("Attacking", isAttacking);
 
         yield return new WaitForSeconds(1f); // Wind-up delay
 
@@ -132,6 +137,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Cooldown before next possible attack
 
         isAttacking = false;
+        animator.SetBool("Attacking", isAttacking);
     }
 
     // Flip the enemy's sprite to face the player (side-scrolling version)

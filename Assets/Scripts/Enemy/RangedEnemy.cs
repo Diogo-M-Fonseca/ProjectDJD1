@@ -8,6 +8,7 @@ public class RangedEnemy : MonoBehaviour
     public float shootRange = 5f;       // Shooting range for ranged attack
     public GameObject bulletPrefab;     // Bullet prefab for shooting
     public Transform firePoint;         // Fire point for bullets
+    [SerializeField] private Animator animator;
 
     private GameObject targetPlayer;        // Reference to the player GameObject
     private IPlayer targetPlayerScript;     // Reference to the IPlayer interface

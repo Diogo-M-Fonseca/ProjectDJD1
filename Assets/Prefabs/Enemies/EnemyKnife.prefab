@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 5697605675120446599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 360.6, y: -286.9, z: 0}
+  m_LocalPosition: {x: 461.5, y: -250.7, z: 0}
   m_LocalScale: {x: 27.955477, y: 31.233036, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,6 +231,7 @@ MonoBehaviour:
   isAttacking: 0
   attackArea: {fileID: 8794038921753960404}
   highscore: {fileID: 0}
+  animator: {fileID: 131164380612257924}
   wallChecker: {fileID: 2841375623293216586}
 --- !u!114 &2392624218083877388
 MonoBehaviour:

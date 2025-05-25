@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class KnifeAttack : MonoBehaviour
     private GameObject attackArea = default;  
     public bool attacking = false; 
     public float timeToAttack = 0.25f;  
-     private float lastAttackTime = 0f; 
+    private float lastAttackTime = 0f;
+    [SerializeField] private Animator animator;
 
    
     // Start is called before the first frame update
@@ -27,10 +29,12 @@ public class KnifeAttack : MonoBehaviour
         {
             lastAttackTime += Time.deltaTime;
 
-            if(lastAttackTime >= timeToAttack)
+
+            if (lastAttackTime >= timeToAttack)
             {
                 lastAttackTime = 0;
                 attacking = false;
+                animator.SetBool("Attack", attacking);
                 attackArea.SetActive(attacking);
             }
         }
@@ -38,6 +42,7 @@ public class KnifeAttack : MonoBehaviour
     private void Attack()
     {
         attacking = true;
+        animator.SetBool("Attack", attacking);
         attackArea.SetActive(attacking);
     }
     
