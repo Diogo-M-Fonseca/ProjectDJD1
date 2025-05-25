@@ -44,18 +44,16 @@ public class RangedEnemy : MonoBehaviour
         {
             shootDelayTimer += Time.deltaTime;
 
-            if (shootDelayTimer >= 1f && shootCooldown <= 0f)
+            if (shootDelayTimer >= 1f / shootRate && shootCooldown <= 0f)
             {
                 ShootAtPlayer();
-                shootCooldown = shootRate;
+                shootCooldown = 30f / shootRate;
                 shootDelayTimer = 0f;
             }
             else
             {
                 shootCooldown -= Time.deltaTime;
             }
-
-            return;
         }
 
         // Stop chasing if player is too far or blocked
@@ -82,19 +80,17 @@ public class RangedEnemy : MonoBehaviour
 
     private void FindPlayerByInterface()
     {
-    MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
-    foreach (MonoBehaviour behaviour in allBehaviours)
-    {
-        if (behaviour is IPlayer player)
+        MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
+        foreach (MonoBehaviour behaviour in allBehaviours)
         {
-            targetPlayerScript = player;
-            targetPlayer = behaviour.gameObject;
-            return;
+            if (behaviour is IPlayer player)
+            {
+                targetPlayerScript = player;
+                targetPlayer = behaviour.gameObject;
+                return;
+            }
         }
     }
-
-    }
-
 
     void StartChasing()
     {
@@ -106,12 +102,18 @@ public class RangedEnemy : MonoBehaviour
         isChasing = false;
     }
 
-    void ChasePlayer()
+void ChasePlayer()
+{
+    // Only chase if outside of shoot range
+    float distanceToPlayer = Vector3.Distance(transform.position, targetPlayer.transform.position);
+
+    if (distanceToPlayer > shootRange)
     {
         Vector3 direction = (targetPlayer.transform.position - transform.position).normalized;
         direction.y = 0; // Optional: prevent vertical movement
         transform.position += direction * speed * Time.deltaTime;
     }
+}
 
     void ShootAtPlayer()
     {

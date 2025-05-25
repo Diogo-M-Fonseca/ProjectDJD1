@@ -14,6 +14,8 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
     }
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private RageBar rageBar;
     private bool isAlive = true;
     private bool isRunning = false;
     public float speed = 5f;
@@ -64,7 +66,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         {
             rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y); // Apply movement
         }
-        animator.SetBool("IsRunning", isRunning);
+        animator.SetBool("Running", isRunning);
         // Flip logic using transform.right to check the direction
         if (moveX < 0 && transform.right.x > 0) // If moving left but facing right
         {
@@ -104,7 +106,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Prevent dashing while already dashing or on cooldown
         canDash = false;
         isDashing = true;
-        animator.SetBool("IsDashing", isDashing);
+        animator.SetBool("Dashing", isDashing);
 
         // Play the dash sound when dash happens
         if (dashAudioSource != null && dashSound != null)
@@ -138,6 +140,6 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Wait for cooldown time before allowing another dash
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        animator.SetBool("IsDashing", isDashing);
+        animator.SetBool("Dashing", isDashing);
     }
 }

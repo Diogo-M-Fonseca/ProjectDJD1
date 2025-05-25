@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &6006593141175596670
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 2208703988740019828, guid: d47f3f6f31e23fd4d9a7db54f2f16f42, type: 3}
   m_Color: {r: 0.8867924, g: 0.079476655, b: 0.079476655, a: 1}
   m_FlipX: 0

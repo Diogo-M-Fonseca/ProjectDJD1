@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     public float jumpForce = 10f;
     public float maxJumpTime = 0.5f;
     public float jumpTime = 0;
+    [SerializeField]
+    private RageBar rageBar;
 
     private Rigidbody2D rb;
     public bool isGrounded;

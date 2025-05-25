@@ -22,7 +22,11 @@ public class RageBar : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+        if (currentRage > maxRage)  // Cap the rage bar at the max value
+        {
+            currentRage = maxRage;
+        }
         // Check if the F key is pressed and start the depletion process
         if (Input.GetKeyDown(KeyCode.F) && currentRage == maxRage)
         {
@@ -56,10 +60,6 @@ public class RageBar : MonoBehaviour
     public void AddRage(float amount)
     {
         currentRage += amount;
-        if (currentRage > maxRage)  // Cap the rage bar at the max value
-        {
-            currentRage = maxRage;
-        }
         Debug.Log("Rage Bar Added: " + currentRage);
     }
 

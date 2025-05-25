@@ -39,6 +39,7 @@ public class BatAttack : MonoBehaviour
             {
                 attackTimer = 0f;
                 attacking = false;
+                animator.SetBool("Attack", attacking);
                 attackArea.SetActive(false);
             }
         }
@@ -49,7 +50,7 @@ public class BatAttack : MonoBehaviour
         attacking = true;
         attackArea.SetActive(true);
         cooldownTimer = attackCooldown;  // Reset cooldown when you attack
-        animator.SetTrigger("Attack");
+        animator.SetBool("Attack", attacking);
     }
 
 }
