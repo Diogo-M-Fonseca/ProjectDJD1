@@ -190,6 +190,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -822,7 +835,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GreenAnimation_0: -19280932763036239
+      GreenAnimation_1: -1875875252624982614
+      GreenAnimation_10: 3727791074489784681
+      GreenAnimation_11: -180396004737358085
+      GreenAnimation_12: -1761957498312474319
+      GreenAnimation_13: -911853674560858195
+      GreenAnimation_14: -1123558581098337349
+      GreenAnimation_15: -7580518352547812477
+      GreenAnimation_16: -2389150584749876564
+      GreenAnimation_17: -6241222527532541869
+      GreenAnimation_18: -1258597565603881863
+      GreenAnimation_19: -7110668511156752974
+      GreenAnimation_2: 1761347027199203788
+      GreenAnimation_20: 5536838108073913590
+      GreenAnimation_21: 5972023967778693345
+      GreenAnimation_22: 5347480785894769257
+      GreenAnimation_23: 466230912440136330
+      GreenAnimation_24: -3933051217197791040
+      GreenAnimation_25: -5756326550844188974
+      GreenAnimation_26: -2613811695280532487
+      GreenAnimation_27: -8502350137145126887
+      GreenAnimation_3: 2192124572749169909
+      GreenAnimation_4: -755447846936126645
+      GreenAnimation_5: -2087120329223484888
+      GreenAnimation_6: -3400003537843993570
+      GreenAnimation_7: -8221015770494626044
+      GreenAnimation_8: -4736094682809154805
+      GreenAnimation_9: 6524442407322361998
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

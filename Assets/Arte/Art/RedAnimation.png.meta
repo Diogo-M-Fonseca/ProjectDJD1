@@ -241,6 +241,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1247,7 +1260,52 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RedAnimation_0: -8918777589458516511
+      RedAnimation_1: 2146983366233266546
+      RedAnimation_10: 2797006165477714739
+      RedAnimation_11: -4811746081310671718
+      RedAnimation_12: 2339550255981699161
+      RedAnimation_13: 651004632073306971
+      RedAnimation_14: 1674814011483187361
+      RedAnimation_15: 5940533254774714912
+      RedAnimation_16: 7353937111631897197
+      RedAnimation_17: -639356033755278837
+      RedAnimation_18: 8289053758252673159
+      RedAnimation_19: -9040318233927245922
+      RedAnimation_2: 4049342500342920914
+      RedAnimation_20: 533018368390579653
+      RedAnimation_21: 4925300513979974098
+      RedAnimation_22: 8264153099908385227
+      RedAnimation_23: 378289973856994962
+      RedAnimation_24: 6656970179084861868
+      RedAnimation_25: 1817458471109020213
+      RedAnimation_26: 90621861395493344
+      RedAnimation_27: -1241695072544423199
+      RedAnimation_28: 5172825768580998415
+      RedAnimation_29: 4477471270235132109
+      RedAnimation_3: -234401961074698236
+      RedAnimation_30: -2764507578292711224
+      RedAnimation_31: 3621864734446310000
+      RedAnimation_32: -8595347286927448385
+      RedAnimation_33: 8625052547384740823
+      RedAnimation_34: -5888944314700406110
+      RedAnimation_35: 2918527643709077410
+      RedAnimation_36: -3753622172736187373
+      RedAnimation_37: -7180075615701602201
+      RedAnimation_38: 158801696613278736
+      RedAnimation_39: 2200068583130882921
+      RedAnimation_4: -4851501734050825548
+      RedAnimation_40: 3760789539966902282
+      RedAnimation_41: 1919873561609570290
+      RedAnimation_42: 9150498110366652471
+      RedAnimation_43: -857451348374652083
+      RedAnimation_44: -4354419922015475971
+      RedAnimation_5: -3505935724203368367
+      RedAnimation_6: 8953268400435652422
+      RedAnimation_7: 2883702426294442677
+      RedAnimation_8: 4280419568318010873
+      RedAnimation_9: 1973840831754313505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

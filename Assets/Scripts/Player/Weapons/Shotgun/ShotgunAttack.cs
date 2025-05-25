@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ShotgunAttack : MonoBehaviour
 {
+    public Animator animator;
     private GameObject attackArea = default;
     public bool attacking = false;
     public float attackDuration = 0.25f;
     public float attackCooldown = 1f;
-
     private float attackTimer = 0f;
     private float cooldownTimer = 0f;
     public bool shotgunAttacking;
@@ -15,10 +15,9 @@ public class ShotgunAttack : MonoBehaviour
     private float recoilXMultiplier = 0f;
     [SerializeField]
     private float recoilYMultiplier = 0f;
+    private int bullets = 2;
     [SerializeField]
-    private float bullets = 2f;
-    [SerializeField]
-    private float maxBullets = 2f;
+    private int maxBullets = 2;
     [SerializeField]
     private float reloadTime = 1f;
     [SerializeField]
@@ -30,7 +29,7 @@ public class ShotgunAttack : MonoBehaviour
 
     // Reference to PlayerMovement (make sure this is set in Inspector or GetComponent)
     public PlayerMovement playerMovement;
-    public BulletDisplay bulletDisplay;  // This is the public field where you assign the BulletDisplay script
+    public BulletUI bulletDisplay;  // This is the public field where you assign the BulletDisplay script
 
 
     void Start()
@@ -41,7 +40,7 @@ public class ShotgunAttack : MonoBehaviour
     // Automatically find the BulletDisplay script in the scene
     if (bulletDisplay == null)
     {
-        bulletDisplay = FindFirstObjectByType<BulletDisplay>();
+        bulletDisplay = FindFirstObjectByType<BulletUI>();
     }
 
     // Check if the BulletDisplay script was found
@@ -51,12 +50,12 @@ public class ShotgunAttack : MonoBehaviour
     }
 
     // Update bullet count UI initially
-    bulletDisplay.UpdateBulletCount(bullets);
 }
 
 
     void Update()
     {
+        animator.SetInteger("Bullets", bullets);
         // Update cooldown timer
         if (cooldownTimer > 0)
         {
@@ -112,7 +111,6 @@ public class ShotgunAttack : MonoBehaviour
         attacking = true;
         attackArea.SetActive(true);
         bullets -= 1;
-        bulletDisplay.UpdateBulletCount(bullets);
         if (bullets < 0) bullets = 0;
 
         ShootConeBullets(); // Fire 3 bullets in a cone
@@ -165,7 +163,7 @@ public class ShotgunAttack : MonoBehaviour
     {
         bullets = maxBullets;
         reloading = false;
-        bulletDisplay.UpdateBulletCount(bullets);
+        
     }
     private void ShootConeBullets()
     {
