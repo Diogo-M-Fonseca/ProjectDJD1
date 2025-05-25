@@ -20,7 +20,7 @@ public class Scoreboard : MonoBehaviour
         
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + score; // Update the UI with the new score
+            scoreText.text =  score.ToString(); // Update the UI with the new score
         }
     }
 
