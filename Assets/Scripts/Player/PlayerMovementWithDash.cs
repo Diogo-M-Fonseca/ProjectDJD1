@@ -104,7 +104,7 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Prevent dashing while already dashing or on cooldown
         canDash = false;
         isDashing = true;
-        animator.SetTrigger("IsDashing");
+        animator.SetBool("IsDashing", isDashing);
 
         // Play the dash sound when dash happens
         if (dashAudioSource != null && dashSound != null)
@@ -138,5 +138,6 @@ public class PlayerMovementWithDash : MonoBehaviour, IPlayer
         // Wait for cooldown time before allowing another dash
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        animator.SetBool("IsDashing", isDashing);
     }
 }
