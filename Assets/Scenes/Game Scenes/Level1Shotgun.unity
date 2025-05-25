@@ -54280,7 +54280,7 @@ Transform:
   m_GameObject: {fileID: 325369446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1998, y: -2.2, z: -23.9}
+  m_LocalPosition: {x: -0.1998, y: -2.2, z: 0}
   m_LocalScale: {x: 1.1911337, y: 1.6259, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54329,7 +54329,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -8221015770494626044, guid: 48cdf025e9409a24da8ac8e2e4a1cabf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -55172,7 +55172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895303558256279150, guid: 876c74a229ef9fa41a4510081ab683d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55229,7 +55229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 271094577368534558, guid: 5901021954d62224da292d49362b347c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6285059805203245718, guid: 5901021954d62224da292d49362b347c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67624,7 +67624,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1275589539659018210, guid: d21a6d31d00974c4e82b1db7ac18f568, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -68418,6 +68418,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 848938760}
     - target: {fileID: 777973502333591029, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 325369449}
+    - target: {fileID: 777973502333591029, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: jumpForce
       value: 450
       objectReference: {fileID: 0}
@@ -68547,7 +68551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8540779048145810798, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4618288233449295363, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}

@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IPlayer
 {
+    [SerializeField]
+    private Animator animator;
+    private bool isRunning = false;
     public float Speed => speed;
     public float JumpForce => jumpForce;
     public float MaxJumpTime => maxJumpTime;
+    private bool jump = false;
     public float JumpTime
     {
         get => jumpTime;
@@ -34,7 +38,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(GroundCheck.position, groundCheckRadius, groundLayer);
-
+        animator.SetBool("OnGround", isGrounded);
         // Reduce recoil lock timer
         if (recoilLockTimer > 0)
         {
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         }
 
         float moveX = Input.GetAxis("Horizontal");
-
+        animator.SetFloat("IsRunning", moveX);
         // Only apply movement if not locked by recoil
         if (recoilLockTimer <= 0)
         {
@@ -63,10 +67,14 @@ public class PlayerMovement : MonoBehaviour, IPlayer
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jump = true;
+            animator.SetBool("Jump", jump);
         }
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+            jump = false;
+            animator.SetBool("Jump", jump);
         }
     }
 
