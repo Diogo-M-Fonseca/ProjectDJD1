@@ -55422,7 +55422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1891671712661327669, guid: 2896b36483df5dd40ab07beeeefc7dbf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -55475,8 +55475,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -287, y: 391}
-  m_SizeDelta: {x: 1008.854, y: 159.076}
+  m_AnchoredPosition: {x: 493.69, y: 222}
+  m_SizeDelta: {x: 932.64, y: 159.076}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &823493870
 MonoBehaviour:
@@ -68349,9 +68349,17 @@ PrefabInstance:
       value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 3540700887292845468, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1406520154}
+    - target: {fileID: 3540700887292845468, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1386213289}
+    - target: {fileID: 3540700887292845468, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
+      propertyPath: maxBullets
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3540700887292845468, guid: 9adfd3400d0b0d048a5f4ae6781abe35, type: 3}
       propertyPath: recoilForce
       value: 150

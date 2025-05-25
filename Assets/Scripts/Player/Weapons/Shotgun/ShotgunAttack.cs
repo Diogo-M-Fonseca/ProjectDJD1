@@ -65,10 +65,13 @@ public class ShotgunAttack : MonoBehaviour
         // Handle reload timer
         if (reloading)
         {
+            animator.SetBool("IsReloading", true);
             reloadTime -= Time.deltaTime;
+            
             if (reloadTime <= 0)
             {
                 Reload();
+                animator.SetBool("IsReloading", false);
             }
         }
 
